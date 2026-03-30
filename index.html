@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SnakFørDetGårGalt.dk</title>
+    <meta
+      name="description"
+      content="SnakFørDetGårGalt.dk er et trygt sted at søge støtte, chatte anonymt og finde hjælp, før ensomhed, vrede og negative online fællesskaber vokser sig større."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#mainContent">Gå til indhold</a>
+
+    <div class="top-banner">
+      <p data-i18n="banner.text">Der er hjælp at hente, og du behøver ikke stå alene med det.</p>
+    </div>
+
+    <div class="contact-strip">
+      <div class="contact-strip-inner">
+        <a href="#helpCards"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 5.15 12.8 19.8 19.8 0 0 1 2.08 4.09 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.63 2.62a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6.09 6.09l1.46-1.24a2 2 0 0 1 2.11-.45c.84.3 1.72.51 2.62.63A2 2 0 0 1 22 16.92z"/></svg></span><span data-i18n="utility.call">Ring</span></a>
+        <a href="#helpCards"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg></span><span data-i18n="utility.text">Skriv</span></a>
+        <a href="#chat"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="14" y2="13"/></svg></span><span data-i18n="utility.chat">Chat</span></a>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <button class="menu-button" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteMenu">
+          <span class="hamburger" aria-hidden="true"></span>
+          <span data-i18n="menu.button">Menu</span>
+        </button>
+
+        <a class="brand" href="#top" aria-label="SnakFørDetGårGalt.dk">
+          <img src="logo-sammenhold-footer.png" alt="SnakFørDetGårGalt.dk" class="brand-image" />
+        </a>
+
+        <div class="header-tools">
+          <button class="search-trigger" id="searchTrigger" type="button" aria-expanded="false" aria-controls="searchPanel">
+            <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.65" y1="16.65" x2="21" y2="21"/></svg></span>
+            <span data-i18n="search.button">Search</span>
+          </button>
+
+          <button class="language-pill" id="languageToggle" type="button" aria-label="Change language">
+            <span class="globe" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18"/><path d="M12 3a15 15 0 0 0 0 18"/></svg></span>
+            <span id="languageLabel">English</span>
+            <span class="caret" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="search-panel" id="searchPanel" hidden>
+      <div class="search-panel-inner">
+        <form class="search-box" id="searchForm" role="search">
+          <label class="sr-only" for="siteSearch" data-i18n="search.label">Søg på siden</label>
+          <input
+            id="siteSearch"
+            name="search"
+            type="search"
+            placeholder="Search"
+            data-i18n-placeholder="search.placeholder"
+            autocomplete="off"
+          />
+          <button class="search-submit" type="submit" aria-label="Search">
+            <span aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.65" y1="16.65" x2="21" y2="21"/></svg></span>
+          </button>
+        </form>
+        <button class="search-close" id="searchClose" type="button">
+          <span data-i18n="search.close">Close</span>
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+    </div>
+
+    <aside class="menu-overlay" id="siteMenu" hidden>
+      <div class="menu-panel">
+        <button class="menu-close" id="menuClose" type="button">
+          <span class="close-icon" aria-hidden="true">×</span>
+          <span data-i18n="menu.close">Luk menu</span>
+        </button>
+
+        <div class="menu-quick-links">
+          <a href="#helpCards"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 5.15 12.8 19.8 19.8 0 0 1 2.08 4.09 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.63 2.62a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6.09 6.09l1.46-1.24a2 2 0 0 1 2.11-.45c.84.3 1.72.51 2.62.63A2 2 0 0 1 22 16.92z"/></svg></span><span data-i18n="utility.call">Ring</span></a>
+          <a href="#helpCards"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg></span><span data-i18n="utility.text">Skriv</span></a>
+          <a href="#chat"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="14" y2="13"/></svg></span><span data-i18n="utility.chat">Chat</span></a>
+        </div>
+
+        <nav class="menu-list" aria-label="Hovednavigation">
+          <a class="menu-item" href="#top"><span data-i18n="menu.home">Hjem</span></a>
+          <details class="menu-item" open>
+            <summary><span data-i18n="menu.getHelp">Få hjælp</span></summary>
+            <div class="submenu">
+              <a href="#helpCards" data-i18n="submenu.expect">Hvad du kan forvente</a>
+              <a href="#chat" data-i18n="submenu.chat">Chat med os</a>
+            </div>
+          </details>
+          <details class="menu-item">
+            <summary><span data-i18n="menu.learn">Viden</span></summary>
+            <div class="submenu">
+              <a href="#resources" data-i18n="submenu.sources">Kilder og baggrund</a>
+              <a href="#resources" data-i18n="submenu.prevention">Forebyggelse og dialog</a>
+            </div>
+          </details>
+          <details class="menu-item">
+            <summary><span data-i18n="menu.involved">Bliv en del af indsatsen</span></summary>
+            <div class="submenu">
+              <a href="#resources" data-i18n="submenu.share">Del viden</a>
+              <a href="#resources" data-i18n="submenu.support">Støt projektet</a>
+            </div>
+          </details>
+          <details class="menu-item">
+            <summary><span data-i18n="menu.providers">For fagpersoner</span></summary>
+            <div class="submenu">
+              <a href="#resources" data-i18n="submenu.research">Forskning</a>
+              <a href="#resources" data-i18n="submenu.method">Metode og perspektiv</a>
+            </div>
+          </details>
+          <details class="menu-item">
+            <summary><span data-i18n="menu.faq">FAQ</span></summary>
+            <div class="submenu">
+              <a href="#helpCards" data-i18n="submenu.free">Er det gratis?</a>
+              <a href="#chat" data-i18n="submenu.anonymous">Er det anonymt?</a>
+            </div>
+          </details>
+          <a class="menu-item" href="#resources"><span data-i18n="menu.media">Ressourcer</span></a>
+          <a class="menu-item" href="#resources"><span data-i18n="menu.about">Om projektet</span></a>
+          <a class="menu-item" href="#resources"><span data-i18n="menu.interpretation">Sprog og tilgængelighed</span></a>
+        </nav>
+      </div>
+    </aside>
+
+    <main id="mainContent">
+      <section class="hero" id="top">
+        <div class="hero-inner">
+          <div class="hero-intro">
+            <p class="hero-kicker" data-i18n="hero.kicker">Støtte uden fordømmelse</p>
+            <h1 data-i18n="hero.title">Hvis du har brug for at tale, er vi her.</h1>
+
+            <p class="hero-copy" data-i18n="hero.body">
+              Vi ved, at livets udfordringer kan føles tunge. Hvis du står med ensomhed, hårde tanker, vrede, afvisning eller online fællesskaber, der trækker dig i en negativ retning, kan det hjælpe at tale med nogen. Du er ikke alene.
+            </p>
+
+            <div class="help-cards" id="helpCards">
+              <a class="help-card" href="#chat"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 5.15 12.8 19.8 19.8 0 0 1 2.08 4.09 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.63 2.62a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6.09 6.09l1.46-1.24a2 2 0 0 1 2.11-.45c.84.3 1.72.51 2.62.63A2 2 0 0 1 22 16.92z"/></svg></span><span data-i18n="actions.call">Ring</span></a>
+              <a class="help-card" href="#chat"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg></span><span data-i18n="actions.text">Skriv</span></a>
+              <a class="help-card" href="#chat"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="14" y2="13"/></svg></span><span data-i18n="actions.chat">Chat</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section feature-stack">
+        <article class="feature-band feature-band-left">
+          <div class="feature-visual teal-visual">
+            <img class="feature-image" src="feature-first.jpg" alt="Ung mand med telefon i hånden" />
+          </div>
+          <div class="feature-copy-card">
+            <p class="eyebrow" data-i18n="expect.eyebrow">Hvad du kan forvente</p>
+            <h2 data-i18n="expect.title">Et trygt første skridt</h2>
+            <p data-i18n="expect.body">Projektet er lavet for at forebygge misogyniske og destruktive tankemønstre gennem støtte, refleksion og tidlig dialog. Her er tonen rolig, respektfuld og uden fordømmelse.</p>
+          </div>
+        </article>
+
+        <article class="feature-band feature-band-right">
+          <div class="feature-visual forest-visual">
+            <img class="feature-image" src="feature-second.webp" alt="Ung person og voksen i en alvorlig samtale" />
+          </div>
+          <div class="feature-copy-card">
+            <p class="eyebrow" data-i18n="box.two.eyebrow">Et alternativ</p>
+            <h2 data-i18n="box.two.title">Tal før spiralen vokser</h2>
+            <p data-i18n="box.two.body">En tidlig samtale kan hjælpe med at bryde isolation, vrede og destruktive online mønstre.</p>
+          </div>
+        </article>
+
+        <article class="feature-band feature-band-left">
+          <div class="feature-visual rose-visual">
+            <img class="feature-image" src="feature-expect.webp" alt="To personer tæt sammen i et trygt øjeblik" />
+          </div>
+          <div class="feature-copy-card">
+            <p class="eyebrow" data-i18n="box.three.eyebrow">Et trygt valg</p>
+            <h2 data-i18n="box.three.title">Anonymt og overskueligt</h2>
+            <p data-i18n="box.three.body">Du kan starte stille. Du behøver ikke have de rigtige ord klar for at række ud.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="chat-section" id="chat">
+        <div class="chat-shell" aria-label="Chatboks">
+          <div class="chat-header">
+            <div>
+              <strong data-i18n="chat.headerTitle">Snak med os</strong>
+              <p data-i18n="chat.headerBody">Gratis og uden fordømmelse</p>
+              <p data-i18n="chat.headerSubbody">Anyone. Anytime. Anonymous.</p>
+            </div>
+            <span class="status-dot" data-i18n="chat.status">Online nu</span>
+            <button class="chat-close" id="chatClose" type="button" aria-label="Luk chat">×</button>
+          </div>
+
+          <div class="chat-messages" id="chatMessages">
+            <article class="message assistant"><p id="initialMessageOne">Hej. Du kan skrive her, hvis du har brug for at vende svære tanker, ensomhed eller frustrationer.</p></article>
+            <article class="message assistant"><p id="initialMessageTwo">Du behøver ikke formulere det perfekt. Hvad fylder mest hos dig lige nu?</p></article>
+          </div>
+
+          <form class="chat-input" id="chatForm">
+            <label class="sr-only" for="messageInput" data-i18n="chat.inputLabel">Skriv en besked</label>
+            <input id="messageInput" name="message" type="text" maxlength="280" placeholder="Skriv din besked her..." autocomplete="off" />
+            <button type="submit" class="primary-button" data-i18n="chat.send">Send</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="content-section" id="resources">
+        <article class="resource-card resource-layout">
+          <div class="resource-copy">
+            <p class="eyebrow" data-i18n="sources.eyebrow">Projektets baggrund</p>
+            <h2 data-i18n="sources.title">Kilder og viden</h2>
+            <p data-i18n="sources.body">Indholdet er inspireret af forskning og formidling om online risikoadfærd, incel-kultur, algoritmer og forebyggelse gennem dialog.</p>
+            <ul class="source-list">
+              <li><a href="https://cfdp.dk/demokratisk-dannelse/risikoadfaerd-online/vidensbank/rapporter/forundersoegelseincel-faellesskaber-i-stor-vaekst/" target="_blank" rel="noreferrer">CFDP: Forundersøgelse af incel-fællesskaber i stor vækst</a></li>
+              <li><a href="https://cfdp.dk/digital-familie/har-du-set-adolescense/" target="_blank" rel="noreferrer">CFDP: Har du set Adolescense?</a></li>
+              <li><a href="https://www.dcu.ie/antibullyingcentre/recommending-toxicity" target="_blank" rel="noreferrer">Dublin City University: Recommending Toxicity</a></li>
+              <li><a href="https://videnskab.dk/kultur-samfund/incels-og-80-20-reglen-forstaa-forskning-bag-kvindehadet-i-ny-tv-serie/" target="_blank" rel="noreferrer">Videnskab.dk: Incels og 80/20-reglen</a></li>
+              <li><a href="https://www.dr.dk/nyheder/indland/incel-kulturen-buldrer-frem-og-den-er-en-del-af-trusselsbilledet-herhjemme" target="_blank" rel="noreferrer">DR: Incel-kulturen buldrer frem</a></li>
+              <li><a href="https://www.bbc.com/news/world-us-canada-43892189" target="_blank" rel="noreferrer">BBC: Artikel om Elliot Rodger</a></li>
+              <li><a href="https://www.reddit.com/r/Vent/comments/1qi4jv6/i_am_turning_into_an_incel/" target="_blank" rel="noreferrer">Reddit: I am turning into an incel</a></li>
+              <li><a href="https://pure.diis.dk/ws/files/3975746/Udenrigs_2_2020_Incels_kvindehad_og_den_nye_antifeminisme.pdf" target="_blank" rel="noreferrer">DIIS: Incels, kvindehad og den nye antifeminisme</a></li>
+              <li><a href="https://videnskab.dk/kultur-samfund/incels-hvorfor-spreder-ensomme-danske-maend-kvindehad-i-internettets-dunkle-afkroge/" target="_blank" rel="noreferrer">Videnskab.dk: Hvorfor spreder ensomme danske mænd kvindehad?</a></li>
+            </ul>
+          </div>
+          <div class="resource-image-wrap">
+            <img class="resource-image" src="resource-side.png" alt="Forsidebillede om incel-kulturen" />
+            <a class="resource-download" href="resource-side.png" download="Projekt.doc.forside.png" data-i18n="sources.download">Download vores projekt</a>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="return-top" href="#top" data-i18n="footer.top">Tilbage til toppen ↑</a>
+      <div class="footer-main">
+        <div class="footer-brand-block">
+          <div class="footer-logo">
+            <img src="logo-sammenhold-footer.png" alt="SnakFørDetGårGalt.dk" class="footer-logo-image" />
+          </div>
+          <p data-i18n="footer.tagline">Hvis du har brug for støtte, så ræk ud. Et trygt sted at tale, før det går galt.</p>
+        </div>
+
+        <div class="footer-links-grid">
+          <div class="footer-column">
+            <a href="#resources" data-i18n="footer.contact">Kontakt</a>
+            <a href="#resources" data-i18n="footer.accessibility">Tilgængelighed</a>
+            <a href="#resources" data-i18n="footer.support">Støt</a>
+          </div>
+          <div class="footer-column">
+            <a href="#resources" data-i18n="footer.confidential">Fortrolighed</a>
+            <a href="#resources" data-i18n="footer.privacy">Privatliv</a>
+            <a href="#resources" data-i18n="footer.terms">Vilkår</a>
+          </div>
+          <div class="footer-column social-column">
+            <a href="#resources">Instagram</a>
+            <a href="#resources">Facebook</a>
+            <a href="#resources">YouTube</a>
+            <a href="#resources">X</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
