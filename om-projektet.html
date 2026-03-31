@@ -38,18 +38,36 @@
         </a>
 
         <div class="header-tools">
-          <a class="page-back-link" href="index.html">
-            <span data-lang="da">Til forsiden</span>
-            <span data-lang="en" hidden>Back to home</span>
-          </a>
-          <button class="language-pill" id="languageToggle" type="button" aria-label="Change language">
-            <span class="globe" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18"/><path d="M12 3a15 15 0 0 0 0 18"/></svg></span>
-            <span id="languageLabel">English</span>
-            <span class="caret" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+          <button class="search-trigger" id="searchTrigger" type="button" aria-expanded="false" aria-controls="searchPanel">
+            <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.65" y1="16.65" x2="21" y2="21"/></svg></span>
+            <span data-i18n="search.button">Søg</span>
           </button>
         </div>
       </div>
     </header>
+
+    <div class="search-panel" id="searchPanel" hidden>
+      <div class="search-panel-inner">
+        <form class="search-box" id="searchForm" role="search">
+          <label class="sr-only" for="siteSearch" data-i18n="search.label">Søg på siden</label>
+          <input
+            id="siteSearch"
+            name="search"
+            type="search"
+            placeholder="Søg"
+            data-i18n-placeholder="search.placeholder"
+            autocomplete="off"
+          />
+          <button class="search-submit" type="submit" aria-label="Søg">
+            <span aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.65" y1="16.65" x2="21" y2="21"/></svg></span>
+          </button>
+        </form>
+        <button class="search-close" id="searchClose" type="button">
+          <span data-i18n="search.close">Luk</span>
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+    </div>
 
     <aside class="menu-overlay" id="siteMenu" hidden>
       <div class="menu-panel">
@@ -62,9 +80,14 @@
           <a class="menu-item" href="index.html"><span data-i18n="menu.home">Hjem</span></a>
           <a class="menu-item" href="om-projektet.html"><span data-i18n="menu.about">Om projektet</span></a>
           <a class="menu-item" href="javascript:void(0)" aria-disabled="true"><span data-i18n="menu.interpretation">Sprog og tilgængelighed</span></a>
-          <button class="theme-menu-button" type="button" data-theme-toggle>
-            <span data-theme-label>Dark mode</span>
-          </button>
+          <div class="menu-accessibility-actions">
+            <button class="theme-menu-button" type="button" id="languageToggle" aria-label="Change language">
+              <span id="languageLabel">English</span>
+            </button>
+            <button class="theme-menu-button" type="button" data-theme-toggle>
+              <span data-theme-label>Dark mode</span>
+            </button>
+          </div>
         </nav>
       </div>
     </aside>
@@ -193,7 +216,6 @@
           <div class="production-copy resource-copy">
             <p class="eyebrow"><span data-lang="da">Projektmateriale</span><span data-lang="en" hidden>Project material</span></p>
             <div class="project-material-inline">
-              <h3><span data-lang="da">Download vores projekt</span><span data-lang="en" hidden>Download our project</span></h3>
               <p><span data-lang="da">Her kan du downloade selve projektet som PDF. Filen bliver koblet på, så snart projektet er klar til upload.</span><span data-lang="en" hidden>Here you will be able to download the full project as a PDF. The file will be connected as soon as the project is ready for upload.</span></p>
               <p class="project-material-label"><span data-lang="da">Udvalgte kilder</span><span data-lang="en" hidden>Selected sources</span></p>
             </div>
@@ -235,23 +257,14 @@
     </main>
 
     <footer class="site-footer">
-      <div class="footer-main footer-main-project">
-        <div class="footer-logo-wrap">
+        <div class="footer-main footer-main-project">
+          <div class="footer-logo-wrap">
           <a class="return-top return-top-project" href="#top">
             <span data-lang="da">Tilbage til toppen ↑</span>
             <span data-lang="en" hidden>Back to top ↑</span>
           </a>
-          <div class="footer-logo footer-logo-project">
-            <img src="logo_uden_baggrund.png" alt="SnakFørDetGårGalt.dk" class="footer-logo-image" />
           </div>
         </div>
-        <div class="footer-brand-block footer-brand-block-project">
-          <p>
-            <span data-lang="da">Hvis du har brug for støtte, så ræk ud. Et trygt sted at tale, før det går galt.</span>
-            <span data-lang="en" hidden>If you need support, reach out. A safe place to talk before things go wrong.</span>
-          </p>
-        </div>
-      </div>
     </footer>
 
     <script src="script.js"></script>

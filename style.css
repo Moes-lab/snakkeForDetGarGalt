@@ -253,8 +253,8 @@ a { color: inherit; text-decoration: none; }
   margin-right: 0;
   border: 0;
   border-radius: 12px;
-  background: var(--blue-dark);
-  color: white;
+  background: #ffffff;
+  color: #10202f;
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
@@ -374,6 +374,18 @@ a { color: inherit; text-decoration: none; }
   font-weight: 600;
   text-align: left;
   cursor: pointer;
+}
+
+.menu-accessibility-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0.25rem 1.6rem 1.25rem;
+}
+
+.menu-accessibility-actions .theme-menu-button {
+  width: 100%;
+  margin: 0;
 }
 
 .theme-menu-button:hover,
@@ -940,6 +952,7 @@ body.theme-dark .top-banner,
 body.theme-dark .contact-strip,
 body.theme-dark .site-header,
 body.theme-dark .search-panel-inner,
+body.theme-dark .help-card,
 body.theme-dark .primary-button,
 body.theme-dark .message.user,
 body.theme-dark .site-footer {
@@ -949,6 +962,7 @@ body.theme-dark .site-footer {
 
 body.theme-dark .top-banner p,
 body.theme-dark .contact-strip-inner a,
+body.theme-dark .help-card,
 body.theme-dark .menu-button,
 body.theme-dark .language-pill,
 body.theme-dark .search-trigger,
@@ -1011,8 +1025,8 @@ body.theme-dark .chat-header {
 }
 
 body.theme-dark .status-dot {
-  background: #243149;
-  color: #edf3f8;
+  background: #dbeadf;
+  color: #315d49;
 }
 
 body.theme-dark .chat-close {
@@ -1209,6 +1223,11 @@ body.theme-dark .page-back-link {
   .menu-quick-links { padding: 1rem; }
   .menu-item > a, .menu-item summary, .menu-item[href] { padding: 1.4rem 1.2rem; }
   .submenu a { padding: 0.7rem 1.6rem 0.9rem; }
+  .menu-accessibility-actions {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+    margin: 0.25rem 1.2rem 1.1rem;
+  }
   .help-card, .help-card.wide { width: 100%; min-width: 0; }
   .page-back-link {
     width: 100%;
