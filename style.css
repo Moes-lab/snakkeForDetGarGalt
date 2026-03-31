@@ -1977,6 +1977,9 @@ body.theme-dark [data-tilt-card]::after {
     transform: translateX(42px);
     box-shadow: 24px 0 50px rgba(17, 33, 79, 0.14);
   }
+  .menu-list {
+    padding-bottom: 10rem;
+  }
   .header-inner,
   .footer-main,
   .footer-links-grid {
