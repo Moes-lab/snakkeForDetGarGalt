@@ -7,15 +7,142 @@ const htmlRoot = document.documentElement;
 const menuToggle = document.querySelector("#menuToggle");
 const menuClose = document.querySelector("#menuClose");
 const siteMenu = document.querySelector("#siteMenu");
+const siteHeader = document.querySelector(".site-header");
+const topBanner = document.querySelector(".top-banner");
+const contactStrip = document.querySelector(".contact-strip");
 const chatSection = document.querySelector(".chat-section");
 const chatClose = document.querySelector("#chatClose");
 const searchTrigger = document.querySelector("#searchTrigger");
 const searchPanel = document.querySelector("#searchPanel");
-const searchClose = document.querySelector("#searchClose");
 const searchForm = document.querySelector("#searchForm");
 const siteSearch = document.querySelector("#siteSearch");
 const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
 const themeLabelElements = document.querySelectorAll("[data-theme-label]");
+const heroSection = document.querySelector(".hero");
+const heroOrbs = document.querySelectorAll(".hero-orb");
+const revealElements = document.querySelectorAll("[data-reveal]");
+
+function updateChatSendState() {
+  if (!chatForm || !messageInput) return;
+  const hasValue = messageInput.value.trim().length > 0;
+  chatForm.classList.toggle("has-value", hasValue);
+  const sendButton = chatForm.querySelector(".chat-send-button");
+  if (sendButton) {
+    sendButton.setAttribute("aria-hidden", hasValue ? "false" : "true");
+    sendButton.tabIndex = hasValue ? 0 : -1;
+  }
+}
+
+function syncBodyScrollLock() {
+  const shouldLockScroll =
+    chatSection?.classList.contains("chat-expanded") || isMenuOpen();
+  document.body.style.overflow = shouldLockScroll ? "hidden" : "";
+}
+
+function syncHeaderLayout() {
+  if (siteHeader) {
+    const headerOffset = Math.round(siteHeader.getBoundingClientRect().bottom);
+    htmlRoot.style.setProperty("--header-offset", `${headerOffset}px`);
+  }
+}
+
+function setupRevealAnimations() {
+  if (!revealElements.length || !("IntersectionObserver" in window)) {
+    revealElements.forEach((element) => element.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.18 });
+
+  revealElements.forEach((element) => observer.observe(element));
+}
+
+function setupHeroMotion() {
+  if (!heroSection || !heroOrbs.length) return;
+
+  const orbStrengths = [16, 24, 12, 20];
+
+  heroSection.addEventListener("pointermove", (event) => {
+    const rect = heroSection.getBoundingClientRect();
+    const offsetX = (event.clientX - rect.left) / rect.width - 0.5;
+    const offsetY = (event.clientY - rect.top) / rect.height - 0.5;
+
+    heroOrbs.forEach((orb, index) => {
+      const strength = orbStrengths[index] || 16;
+      orb.style.setProperty("--orb-x", `${offsetX * strength}px`);
+      orb.style.setProperty("--orb-y", `${offsetY * strength}px`);
+    });
+  });
+
+  heroSection.addEventListener("pointerleave", () => {
+    heroOrbs.forEach((orb) => {
+      orb.style.setProperty("--orb-x", "0px");
+      orb.style.setProperty("--orb-y", "0px");
+    });
+  });
+}
+
+function setupTiltCards() {
+  if (
+    !window.matchMedia("(hover: hover) and (pointer: fine)").matches ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    return;
+  }
+
+  const tiltTargets = document.querySelectorAll(
+    [
+      ".help-card",
+      ".resource-card",
+      ".chat-shell",
+      ".production-panel",
+      ".menu-panel",
+      ".resource-image",
+      ".resource-video"
+    ].join(", ")
+  );
+
+  tiltTargets.forEach((element) => {
+    element.setAttribute("data-tilt-card", "true");
+
+    const maxTilt =
+      element.classList.contains("help-card") ? 10 :
+      element.classList.contains("production-panel") ? 5 :
+      element.classList.contains("menu-panel") ? 4 :
+      7;
+
+    const resetTilt = () => {
+      element.style.setProperty("--tilt-x", "0deg");
+      element.style.setProperty("--tilt-y", "0deg");
+      element.style.setProperty("--glow-x", "50%");
+      element.style.setProperty("--glow-y", "50%");
+      element.style.setProperty("--glow-alpha", "0");
+    };
+
+    element.addEventListener("pointermove", (event) => {
+      const rect = element.getBoundingClientRect();
+      const percentX = (event.clientX - rect.left) / rect.width;
+      const percentY = (event.clientY - rect.top) / rect.height;
+      const rotateY = (percentX - 0.5) * maxTilt;
+      const rotateX = (0.5 - percentY) * maxTilt;
+
+      element.style.setProperty("--tilt-x", `${rotateX}deg`);
+      element.style.setProperty("--tilt-y", `${rotateY}deg`);
+      element.style.setProperty("--glow-x", `${percentX * 100}%`);
+      element.style.setProperty("--glow-y", `${percentY * 100}%`);
+      element.style.setProperty("--glow-alpha", "1");
+    });
+
+    element.addEventListener("pointerleave", resetTilt);
+    resetTilt();
+  });
+}
 
 const translations = {
   da: {
@@ -318,56 +445,102 @@ function runSiteSearch(query) {
     return;
   }
 
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
   const searchTargets = [
-    { keywords: ["chat", "snak", "talk", "skriv"], selector: "#chat" },
-    { keywords: ["hjælp", "help", "støtte", "support"], selector: "#helpCards" },
-    { keywords: ["kilder", "sources", "viden", "learn", "research"], selector: "#resources" },
-    { keywords: ["produktion", "production", "litteratur", "literature", "ai", "analyse", "medieprodukt"], selector: "#production" },
-    { keywords: ["faq", "spørgsmål"], selector: "#resources" },
-    { keywords: ["hjem", "home"], selector: "#top" }
+    { keywords: ["chat", "snak", "talk", "skriv"], href: "index.html#chat" },
+    { keywords: ["hjælp", "help", "støtte", "support"], href: "index.html#helpCards" },
+    { keywords: ["analyse", "analysis", "diskursanalyse"], href: "analyse.html#analysis-overview" },
+    { keywords: ["målgruppe", "target group"], href: "analyse.html#analysis-target-group" },
+    { keywords: ["litteratur", "literature", "kilder", "sources"], href: "analyse.html#analysis-sources" },
+    { keywords: ["motivation"], href: "om-projektet.html#motivation" },
+    { keywords: ["problemformulering", "research question"], href: "om-projektet.html#problemformulering" },
+    { keywords: ["teori", "theory"], href: "om-projektet.html#teori" },
+    { keywords: ["metode", "method"], href: "om-projektet.html#metode" },
+    { keywords: ["fund", "findings"], href: "om-projektet.html#analyse" },
+    { keywords: ["diskussion", "konklusion", "conclusion"], href: "om-projektet.html#diskussion-konklusion" },
+    { keywords: ["produktion", "produktionsproces", "production"], href: "om-projektet.html#produktionsproces" },
+    { keywords: ["projektmateriale", "project material"], href: "om-projektet.html#projektmateriale" },
+    { keywords: ["brug af ai", "ai"], href: "om-projektet.html#brug-af-ai" },
+    { keywords: ["medieprodukt", "media product", "video", "somer-video"], href: "medieprodukt.html#media-overview" },
+    { keywords: ["virkemidler", "creative tools"], href: "medieprodukt.html#media-ai" },
+    { keywords: ["hjem", "home"], href: "index.html#top" }
   ];
 
   const match = searchTargets.find((target) =>
     target.keywords.some((keyword) => value.includes(keyword))
   );
 
-  const element = document.querySelector(match?.selector || "#mainContent");
-  element?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const targetHref = match?.href || `${currentPage}#mainContent`;
+  const [targetPage, targetHash] = targetHref.split("#");
+
+  if (targetPage === currentPage || targetPage === "") {
+    const element = document.querySelector(`#${targetHash || "mainContent"}`);
+    element?.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (targetHash) {
+      history.replaceState(null, "", `#${targetHash}`);
+    }
+    return;
+  }
+
+  window.location.href = targetHref;
 }
 
 function openSearchPanel() {
   if (!searchPanel) return;
   searchPanel.hidden = false;
+  window.requestAnimationFrame(() => {
+    searchPanel.classList.add("is-open");
+  });
   searchTrigger?.setAttribute("aria-expanded", "true");
   window.setTimeout(() => siteSearch?.focus(), 0);
 }
 
 function closeSearchPanel() {
   if (!searchPanel) return;
-  searchPanel.hidden = true;
+  searchPanel.classList.remove("is-open");
   searchTrigger?.setAttribute("aria-expanded", "false");
+  window.setTimeout(() => {
+    if (!searchPanel.classList.contains("is-open")) {
+      searchPanel.hidden = true;
+    }
+  }, 240);
 }
 
 function expandChat() {
   chatSection?.classList.add("chat-expanded");
-  document.body.style.overflow = "hidden";
+  syncBodyScrollLock();
 }
 
 function collapseChat() {
   chatSection?.classList.remove("chat-expanded");
-  document.body.style.overflow = "";
+  syncBodyScrollLock();
+}
+
+function isMenuOpen() {
+  return menuToggle?.getAttribute("aria-expanded") === "true";
 }
 
 function closeMenu() {
   if (!siteMenu || !menuToggle) return;
-  siteMenu.hidden = true;
   menuToggle.setAttribute("aria-expanded", "false");
+  siteMenu.classList.remove("is-open");
+  syncBodyScrollLock();
+  window.setTimeout(() => {
+    if (!siteMenu.classList.contains("is-open")) {
+      siteMenu.hidden = true;
+    }
+  }, 360);
 }
 
 function openMenu() {
   if (!siteMenu || !menuToggle) return;
+  syncHeaderLayout();
   siteMenu.hidden = false;
   menuToggle.setAttribute("aria-expanded", "true");
+  syncBodyScrollLock();
+  window.requestAnimationFrame(() => {
+    siteMenu.classList.add("is-open");
+  });
 }
 
 chatForm?.addEventListener("submit", (event) => {
@@ -378,6 +551,7 @@ chatForm?.addEventListener("submit", (event) => {
   expandChat();
   appendMessage(message, "user");
   messageInput.value = "";
+  updateChatSendState();
 
   const replies = translations[currentLanguage].replies;
   const reply = replies[Math.floor(Math.random() * replies.length)];
@@ -390,6 +564,8 @@ chatForm?.addEventListener("submit", (event) => {
 languageToggle?.addEventListener("click", () => {
   setLanguage(currentLanguage === "da" ? "en" : "da");
 });
+
+messageInput?.addEventListener("input", updateChatSendState);
 
 themeToggleButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -404,11 +580,20 @@ searchForm?.addEventListener("submit", (event) => {
 });
 
 searchTrigger?.addEventListener("click", () => {
-  if (searchPanel?.hidden) openSearchPanel();
-  else closeSearchPanel();
-});
+  if (searchPanel?.hidden) {
+    openSearchPanel();
+    return;
+  }
 
-searchClose?.addEventListener("click", closeSearchPanel);
+  const query = siteSearch?.value?.trim() || "";
+  if (query) {
+    runSiteSearch(query);
+    closeSearchPanel();
+    return;
+  }
+
+  closeSearchPanel();
+});
 
 document.addEventListener("click", (event) => {
   if (!searchPanel || searchPanel.hidden) return;
@@ -418,10 +603,11 @@ document.addEventListener("click", (event) => {
 
 messageInput?.addEventListener("focus", expandChat);
 chatClose?.addEventListener("click", collapseChat);
+updateChatSendState();
 
 menuToggle?.addEventListener("click", () => {
-  if (siteMenu.hidden) openMenu();
-  else closeMenu();
+  if (isMenuOpen()) closeMenu();
+  else openMenu();
 });
 
 menuClose?.addEventListener("click", closeMenu);
@@ -446,7 +632,13 @@ try {
   savedTheme = localStorage.getItem("siteTheme") || "light";
 } catch {}
 
+syncHeaderLayout();
+window.addEventListener("load", syncHeaderLayout);
+window.addEventListener("resize", syncHeaderLayout);
 setTheme(savedTheme === "dark" ? "dark" : "light");
 setLanguage(savedLanguage === "en" ? "en" : "da");
+setupRevealAnimations();
+setupHeroMotion();
+setupTiltCards();
 
 
