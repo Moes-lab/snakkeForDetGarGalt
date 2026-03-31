@@ -1,4 +1,4 @@
-const chatForm = document.querySelector("#chatForm");
+﻿const chatForm = document.querySelector("#chatForm");
 const messageInput = document.querySelector("#messageInput");
 const chatMessages = document.querySelector("#chatMessages");
 const languageToggle = document.querySelector("#languageToggle");
@@ -14,6 +14,8 @@ const searchPanel = document.querySelector("#searchPanel");
 const searchClose = document.querySelector("#searchClose");
 const searchForm = document.querySelector("#searchForm");
 const siteSearch = document.querySelector("#siteSearch");
+const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+const themeLabelElements = document.querySelectorAll("[data-theme-label]");
 
 const translations = {
   da: {
@@ -22,9 +24,9 @@ const translations = {
     "utility.text": "Skriv",
     "utility.chat": "Chat",
     "search.label": "Søg på siden",
-    "search.button": "Search",
-    "search.placeholder": "Search",
-    "search.close": "Close",
+    "search.button": "Søg",
+    "search.placeholder": "Søg",
+    "search.close": "Luk",
     "menu.button": "Menu",
     "menu.close": "Luk menu",
     "menu.home": "Hjem",
@@ -79,6 +81,28 @@ const translations = {
     "sources.title": "Kilder og viden",
     "sources.body": "Indholdet er inspireret af forskning og formidling om online risikoadfærd, incel-kultur, algoritmer og forebyggelse gennem dialog.",
     "sources.download": "Download vores projekt",
+    "production.eyebrow": "Produktionsproces",
+    "production.title": "Fra analyse til medieprodukt",
+    "production.introOne": "Vores medieprodukt er en kort SoMe-video på 1-3 minutter, der henvender sig til unge mænd i risiko for incel-påvirkning. Formatet er valgt, fordi målgruppen primært møder både modfortællinger og radikaliserende indhold i hurtige, algoritmestyrede feeds på platforme som TikTok, Instagram Reels og YouTube Shorts.",
+    "production.introTwo": "Videoen tager udgangspunkt i vores diskursanalyse og viser, hvordan gentagelse, humor og polariserende udsagn kan skabe en oplevelse af normalitet. Dramaturgisk bevæger den sig fra relativt uskyldigt indhold om selvoptimering mod mere ekstreme og fjendtlige fortællinger, før et markant brud med stilhed og sort skærm skaber plads til refleksion.",
+    "production.introThree": "Som supplement har vi udviklet SnakFørDetGårGalt.dk, der tilbyder et trygt sted med støtte, viden og konkrete redskaber til at bryde med negative online fællesskaber.",
+    "production.videoLink": "Se produktet her",
+    "production.siteLink": "Tilhørende hjemmeside: SnakFørDetGårGalt.dk",
+    "production.quote": "\"Hvis du mærker, at disse fællesskaber trækker dig ind: stop og scroll væk. Eller kontakt os.\"",
+    "production.literatureTitle": "Litteraturliste",
+    "production.litOne": "Zuboff, Shoshana (2019). The Age of Surveillance Capitalism. PublicAffairs.",
+    "production.litTwo": "Gillespie, Tarleton (2018). Custodians of the Internet. Yale University Press.",
+    "production.litThree": "Falktoft Ulrik (2025). Os og Dem. Materiale til Digital Kultur, Erhvervsakademi København.",
+    "production.litFour": "Læremiddel.dk (2020). Diskursanalyse.",
+    "production.litFive": "Izotova, N., Polishchuk, M., Taranik-Tkachuk, K. (2021). Discourse analysis and digital technologies.",
+    "production.litSix": "Baker, Ging & Brandt Andreasen (2024). Recommending Toxicity.",
+    "production.litSeven": "Center for Digital Pædagogik (2025). Forundersøgelse - Incelfællesskaber i stor vækst.",
+    "production.litEight": "Reddit: I am turning into an incel.",
+    "production.litNine": "Videnskab.dk: Incels og 80/20-reglen.",
+    "production.litTen": "BBC (2018). Elliot Rodger: How misogynist killer became 'incel hero'.",
+    "production.aiTitle": "Brug af AI",
+    "production.aiBodyOne": "Vi har brugt AI til at vibe-kode vores hjemmeside.",
+    "production.aiBodyTwo": "AI er desuden anvendt som skrive- og strukturassistent til idégenerering samt forslag til disposition og kapitelstruktur. Alle faglige valg, formuleringer, analyser, konklusioner, kilder og faktatjek er udarbejdet og verificeret af forfatterne.",
     "footer.top": "Tilbage til toppen ↑",
     "footer.tagline": "Hvis du har brug for støtte, så ræk ud. Et trygt sted at tale, før det går galt.",
     "footer.contact": "Kontakt",
@@ -160,6 +184,28 @@ const translations = {
     "sources.title": "Sources and knowledge",
     "sources.body": "The content is informed by research and reporting on online risk behavior, incel culture, algorithms, and prevention through dialogue.",
     "sources.download": "Download our project",
+    "production.eyebrow": "Production process",
+    "production.title": "From analysis to media product",
+    "production.introOne": "Our media product is a short social media video of 1-3 minutes aimed at young men at risk of incel influence. We chose this format because the target group primarily encounters both counter-narratives and radicalizing content in fast, algorithm-driven feeds on platforms such as TikTok, Instagram Reels, and YouTube Shorts.",
+    "production.introTwo": "The video draws on our discourse analysis and shows how repetition, humor, and polarizing statements can create a sense of normality. Dramaturgically, it moves from relatively harmless self-improvement content toward more extreme and hostile narratives before a sharp break with silence and a black screen creates space for reflection.",
+    "production.introThree": "As a supplement, we developed SnakFørDetGårGalt.dk, which offers a safe place with support, knowledge, and concrete tools for breaking away from negative online communities.",
+    "production.videoLink": "View the product here",
+    "production.siteLink": "Related website: SnakFørDetGårGalt.dk",
+    "production.quote": "\"If you feel these communities pulling you in: stop and scroll away. Or contact us.\"",
+    "production.literatureTitle": "Literature list",
+    "production.litOne": "Zuboff, Shoshana (2019). The Age of Surveillance Capitalism. PublicAffairs.",
+    "production.litTwo": "Gillespie, Tarleton (2018). Custodians of the Internet. Yale University Press.",
+    "production.litThree": "Falktoft Ulrik (2025). Os og Dem. Material for Digital Culture, Copenhagen School of Design and Technology.",
+    "production.litFour": "Læremiddel.dk (2020). Discourse analysis.",
+    "production.litFive": "Izotova, N., Polishchuk, M., Taranik-Tkachuk, K. (2021). Discourse analysis and digital technologies.",
+    "production.litSix": "Baker, Ging & Brandt Andreasen (2024). Recommending Toxicity.",
+    "production.litSeven": "Center for Digital Pædagogik (2025). Preliminary study - incel communities are growing rapidly.",
+    "production.litEight": "Reddit: I am turning into an incel.",
+    "production.litNine": "Videnskab.dk: Incels and the 80/20 rule.",
+    "production.litTen": "BBC (2018). Elliot Rodger: How misogynist killer became 'incel hero'.",
+    "production.aiTitle": "Use of AI",
+    "production.aiBodyOne": "We used AI to vibe-code our website.",
+    "production.aiBodyTwo": "AI was also used as a writing and structure assistant for idea generation and suggestions for outline and chapter structure. All academic choices, wording, analyses, conclusions, sources, and fact checks were prepared and verified by the authors.",
     "footer.top": "Return to top ↑",
     "footer.tagline": "If you need support, reach out. A safe place to talk before things go wrong.",
     "footer.contact": "Contact",
@@ -181,6 +227,30 @@ const translations = {
 };
 
 let currentLanguage = "da";
+let currentTheme = "light";
+const themeLabels = {
+  da: {
+    light: "Mørk tilstand",
+    dark: "Lys tilstand"
+  },
+  en: {
+    light: "Dark mode",
+    dark: "Light mode"
+  }
+};
+
+function updateLanguageBlocks(language) {
+  document.querySelectorAll("[data-lang]").forEach((element) => {
+    element.hidden = element.dataset.lang !== language;
+  });
+}
+
+function updateThemeButtons() {
+  const label = themeLabels[currentLanguage]?.[currentTheme] || themeLabels.da.light;
+  themeLabelElements.forEach((element) => {
+    element.textContent = label;
+  });
+}
 
 function setLanguage(language) {
   currentLanguage = language;
@@ -194,13 +264,37 @@ function setLanguage(language) {
     }
   });
 
-  messageInput.placeholder = translations[language]["chat.placeholder"];
+  if (messageInput) {
+    messageInput.placeholder = translations[language]["chat.placeholder"];
+  }
   if (siteSearch) {
     siteSearch.placeholder = translations[language]["search.placeholder"];
   }
-  document.querySelector("#initialMessageOne").textContent = translations[language].initialOne;
-  document.querySelector("#initialMessageTwo").textContent = translations[language].initialTwo;
-  languageLabel.textContent = translations[language].toggle;
+  const initialMessageOne = document.querySelector("#initialMessageOne");
+  const initialMessageTwo = document.querySelector("#initialMessageTwo");
+  if (initialMessageOne) {
+    initialMessageOne.textContent = translations[language].initialOne;
+  }
+  if (initialMessageTwo) {
+    initialMessageTwo.textContent = translations[language].initialTwo;
+  }
+  if (languageLabel) {
+    languageLabel.textContent = translations[language].toggle;
+  }
+  updateLanguageBlocks(language);
+  updateThemeButtons();
+  try {
+    localStorage.setItem("siteLanguage", language);
+  } catch {}
+}
+
+function setTheme(theme) {
+  currentTheme = theme === "dark" ? "dark" : "light";
+  document.body.classList.toggle("theme-dark", currentTheme === "dark");
+  updateThemeButtons();
+  try {
+    localStorage.setItem("siteTheme", currentTheme);
+  } catch {}
 }
 
 function createMessage(text, type) {
@@ -228,6 +322,7 @@ function runSiteSearch(query) {
     { keywords: ["chat", "snak", "talk", "skriv"], selector: "#chat" },
     { keywords: ["hjælp", "help", "støtte", "support"], selector: "#helpCards" },
     { keywords: ["kilder", "sources", "viden", "learn", "research"], selector: "#resources" },
+    { keywords: ["produktion", "production", "litteratur", "literature", "ai", "analyse", "medieprodukt"], selector: "#production" },
     { keywords: ["faq", "spørgsmål"], selector: "#resources" },
     { keywords: ["hjem", "home"], selector: "#top" }
   ];
@@ -264,11 +359,13 @@ function collapseChat() {
 }
 
 function closeMenu() {
+  if (!siteMenu || !menuToggle) return;
   siteMenu.hidden = true;
   menuToggle.setAttribute("aria-expanded", "false");
 }
 
 function openMenu() {
+  if (!siteMenu || !menuToggle) return;
   siteMenu.hidden = false;
   menuToggle.setAttribute("aria-expanded", "true");
 }
@@ -294,6 +391,12 @@ languageToggle?.addEventListener("click", () => {
   setLanguage(currentLanguage === "da" ? "en" : "da");
 });
 
+themeToggleButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    setTheme(currentTheme === "dark" ? "light" : "dark");
+  });
+});
+
 searchForm?.addEventListener("submit", (event) => {
   event.preventDefault();
   runSiteSearch(siteSearch?.value || "");
@@ -306,6 +409,12 @@ searchTrigger?.addEventListener("click", () => {
 });
 
 searchClose?.addEventListener("click", closeSearchPanel);
+
+document.addEventListener("click", (event) => {
+  if (!searchPanel || searchPanel.hidden) return;
+  if (searchPanel.contains(event.target) || searchTrigger?.contains(event.target)) return;
+  closeSearchPanel();
+});
 
 messageInput?.addEventListener("focus", expandChat);
 chatClose?.addEventListener("click", collapseChat);
@@ -327,4 +436,17 @@ siteMenu?.addEventListener("click", (event) => {
   }
 });
 
-setLanguage("da");
+let savedLanguage = "da";
+try {
+  savedLanguage = localStorage.getItem("siteLanguage") || "da";
+} catch {}
+
+let savedTheme = "light";
+try {
+  savedTheme = localStorage.getItem("siteTheme") || "light";
+} catch {}
+
+setTheme(savedTheme === "dark" ? "dark" : "light");
+setLanguage(savedLanguage === "en" ? "en" : "da");
+
+

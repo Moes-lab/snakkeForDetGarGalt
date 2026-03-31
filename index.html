@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="da">
   <head>
     <meta charset="UTF-8" />
@@ -39,13 +39,13 @@
         </button>
 
         <a class="brand" href="#top" aria-label="SnakFørDetGårGalt.dk">
-          <img src="logo-sammenhold-footer.png" alt="SnakFørDetGårGalt.dk" class="brand-image" />
+          <img src="logo_uden_baggrund.png" alt="SnakFørDetGårGalt.dk" class="brand-image" />
         </a>
 
         <div class="header-tools">
           <button class="search-trigger" id="searchTrigger" type="button" aria-expanded="false" aria-controls="searchPanel">
             <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.65" y1="16.65" x2="21" y2="21"/></svg></span>
-            <span data-i18n="search.button">Search</span>
+            <span data-i18n="search.button">Søg</span>
           </button>
 
           <button class="language-pill" id="languageToggle" type="button" aria-label="Change language">
@@ -65,16 +65,16 @@
             id="siteSearch"
             name="search"
             type="search"
-            placeholder="Search"
+            placeholder="Søg"
             data-i18n-placeholder="search.placeholder"
             autocomplete="off"
           />
-          <button class="search-submit" type="submit" aria-label="Search">
+          <button class="search-submit" type="submit" aria-label="Søg">
             <span aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.65" y1="16.65" x2="21" y2="21"/></svg></span>
           </button>
         </form>
         <button class="search-close" id="searchClose" type="button">
-          <span data-i18n="search.close">Close</span>
+          <span data-i18n="search.close">Luk</span>
           <span aria-hidden="true">×</span>
         </button>
       </div>
@@ -105,35 +105,39 @@
           <details class="menu-item">
             <summary><span data-i18n="menu.learn">Viden</span></summary>
             <div class="submenu">
-              <a href="#resources" data-i18n="submenu.sources">Kilder og baggrund</a>
-              <a href="#resources" data-i18n="submenu.prevention">Forebyggelse og dialog</a>
+              <a href="javascript:void(0)" aria-disabled="true" data-i18n="submenu.sources">Kilder og baggrund</a>
+              <a href="javascript:void(0)" aria-disabled="true" data-i18n="submenu.prevention">Forebyggelse og dialog</a>
             </div>
           </details>
           <details class="menu-item">
             <summary><span data-i18n="menu.involved">Bliv en del af indsatsen</span></summary>
             <div class="submenu">
-              <a href="#resources" data-i18n="submenu.share">Del viden</a>
-              <a href="#resources" data-i18n="submenu.support">Støt projektet</a>
+              <a href="javascript:void(0)" aria-disabled="true" data-i18n="submenu.share">Del viden</a>
+              <a href="javascript:void(0)" aria-disabled="true" data-i18n="submenu.support">Støt projektet</a>
             </div>
           </details>
           <details class="menu-item">
             <summary><span data-i18n="menu.providers">For fagpersoner</span></summary>
             <div class="submenu">
-              <a href="#resources" data-i18n="submenu.research">Forskning</a>
-              <a href="#resources" data-i18n="submenu.method">Metode og perspektiv</a>
+              <a href="javascript:void(0)" aria-disabled="true" data-i18n="submenu.research">Forskning</a>
+              <a href="javascript:void(0)" aria-disabled="true" data-i18n="submenu.method">Metode og perspektiv</a>
             </div>
           </details>
           <details class="menu-item">
             <summary><span data-i18n="menu.faq">FAQ</span></summary>
             <div class="submenu">
-              <a href="#helpCards" data-i18n="submenu.free">Er det gratis?</a>
-              <a href="#chat" data-i18n="submenu.anonymous">Er det anonymt?</a>
+              <a href="javascript:void(0)" aria-disabled="true" data-i18n="submenu.free">Er det gratis?</a>
+              <a href="javascript:void(0)" aria-disabled="true" data-i18n="submenu.anonymous">Er det anonymt?</a>
             </div>
           </details>
-          <a class="menu-item" href="#resources"><span data-i18n="menu.media">Ressourcer</span></a>
-          <a class="menu-item" href="#resources"><span data-i18n="menu.about">Om projektet</span></a>
-          <a class="menu-item" href="#resources"><span data-i18n="menu.interpretation">Sprog og tilgængelighed</span></a>
+          <a class="menu-item" href="javascript:void(0)" aria-disabled="true"><span data-i18n="menu.media">Ressourcer</span></a>
+          <a class="menu-item" href="om-projektet.html"><span data-i18n="menu.about">Om projektet</span></a>
+          <a class="menu-item" href="javascript:void(0)" aria-disabled="true"><span data-i18n="menu.interpretation">Sprog og tilgængelighed</span></a>
+          <button class="theme-menu-button" type="button" data-theme-toggle>
+            <span data-theme-label>Dark mode</span>
+          </button>
         </nav>
+
       </div>
     </aside>
 
@@ -217,27 +221,36 @@
         </div>
       </section>
 
-      <section class="content-section" id="resources">
-        <article class="resource-card resource-layout">
-          <div class="resource-copy">
-            <p class="eyebrow" data-i18n="sources.eyebrow">Projektets baggrund</p>
-            <h2 data-i18n="sources.title">Kilder og viden</h2>
-            <p data-i18n="sources.body">Indholdet er inspireret af forskning og formidling om online risikoadfærd, incel-kultur, algoritmer og forebyggelse gennem dialog.</p>
-            <ul class="source-list">
-              <li><a href="https://cfdp.dk/demokratisk-dannelse/risikoadfaerd-online/vidensbank/rapporter/forundersoegelseincel-faellesskaber-i-stor-vaekst/" target="_blank" rel="noreferrer">CFDP: Forundersøgelse af incel-fællesskaber i stor vækst</a></li>
-              <li><a href="https://cfdp.dk/digital-familie/har-du-set-adolescense/" target="_blank" rel="noreferrer">CFDP: Har du set Adolescense?</a></li>
-              <li><a href="https://www.dcu.ie/antibullyingcentre/recommending-toxicity" target="_blank" rel="noreferrer">Dublin City University: Recommending Toxicity</a></li>
-              <li><a href="https://videnskab.dk/kultur-samfund/incels-og-80-20-reglen-forstaa-forskning-bag-kvindehadet-i-ny-tv-serie/" target="_blank" rel="noreferrer">Videnskab.dk: Incels og 80/20-reglen</a></li>
-              <li><a href="https://www.dr.dk/nyheder/indland/incel-kulturen-buldrer-frem-og-den-er-en-del-af-trusselsbilledet-herhjemme" target="_blank" rel="noreferrer">DR: Incel-kulturen buldrer frem</a></li>
-              <li><a href="https://www.bbc.com/news/world-us-canada-43892189" target="_blank" rel="noreferrer">BBC: Artikel om Elliot Rodger</a></li>
-              <li><a href="https://www.reddit.com/r/Vent/comments/1qi4jv6/i_am_turning_into_an_incel/" target="_blank" rel="noreferrer">Reddit: I am turning into an incel</a></li>
-              <li><a href="https://pure.diis.dk/ws/files/3975746/Udenrigs_2_2020_Incels_kvindehad_og_den_nye_antifeminisme.pdf" target="_blank" rel="noreferrer">DIIS: Incels, kvindehad og den nye antifeminisme</a></li>
-              <li><a href="https://videnskab.dk/kultur-samfund/incels-hvorfor-spreder-ensomme-danske-maend-kvindehad-i-internettets-dunkle-afkroge/" target="_blank" rel="noreferrer">Videnskab.dk: Hvorfor spreder ensomme danske mænd kvindehad?</a></li>
-            </ul>
+      <section class="content-section" id="production">
+        <article class="resource-card production-card resource-layout">
+          <div class="production-copy resource-copy">
+            <h2>
+              <span data-lang="da">Incel-kulturen</span>
+              <span data-lang="en" hidden>Incel culture</span>
+            </h2>
+            <p>
+              <span data-lang="da">Projektet undersøger, hvordan sociale medier, algoritmer og digitale fællesskaber kan være med til at forme unge mænds selvforståelse og digitale adfærd, særligt i relation til manosfæren og incel-kulturen.</span>
+              <span data-lang="en" hidden>The project explores how social media, algorithms, and digital communities can help shape young men's self-understanding and digital behavior, especially in relation to the manosphere and incel culture.</span>
+            </p>
+            <p>
+              <span data-lang="da">Med udgangspunkt i teorier om polarisering, overvågningskapitalisme og platformes rolle som aktive gatekeepere belyser projektet, hvordan bestemte forestillinger om køn, maskulinitet og fællesskab kan forstærkes online.</span>
+              <span data-lang="en" hidden>Drawing on theories of polarization, surveillance capitalism, and the role of platforms as active gatekeepers, the project highlights how certain ideas about gender, masculinity, and community can be reinforced online.</span>
+            </p>
+            <p>
+              <span data-lang="da">Gennem kvalitative interviews, diskursanalyse og teori arbejder projektet med at forstå, hvordan disse miljøer opstår, spredes og normaliseres, samt hvilke konsekvenser det kan have for unge mænds identitet, adfærd og opfattelse af andre.</span>
+              <span data-lang="en" hidden>Through qualitative interviews, discourse analysis, and theory, the project works to understand how these environments emerge, spread, and become normalized, and what consequences they may have for young men's identity, behavior, and perception of others.</span>
+            </p>
+            <a class="project-page-link" href="om-projektet.html">
+              <span data-lang="da">Bliv klogere på projektet</span>
+              <span data-lang="en" hidden>Learn more about the project</span>
+            </a>
           </div>
           <div class="resource-image-wrap">
-            <img class="resource-image" src="resource-side.png" alt="Forsidebillede om incel-kulturen" />
-            <a class="resource-download" href="resource-side.png" download="Projekt.doc.forside.png" data-i18n="sources.download">Download vores projekt</a>
+            <img class="resource-image" src="resource-side.png" alt="Forsidebillede om projektets baggrund" />
+            <a class="resource-download" href="resource-side.png" download="Projekt.doc.forside.png">
+              <span data-lang="da">Download projektet</span>
+              <span data-lang="en" hidden>Download the project</span>
+            </a>
           </div>
         </article>
       </section>
@@ -248,27 +261,27 @@
       <div class="footer-main">
         <div class="footer-brand-block">
           <div class="footer-logo">
-            <img src="logo-sammenhold-footer.png" alt="SnakFørDetGårGalt.dk" class="footer-logo-image" />
+          <img src="logo_uden_baggrund.png" alt="SnakFørDetGårGalt.dk" class="footer-logo-image" />
           </div>
           <p data-i18n="footer.tagline">Hvis du har brug for støtte, så ræk ud. Et trygt sted at tale, før det går galt.</p>
         </div>
 
         <div class="footer-links-grid">
           <div class="footer-column">
-            <a href="#resources" data-i18n="footer.contact">Kontakt</a>
-            <a href="#resources" data-i18n="footer.accessibility">Tilgængelighed</a>
-            <a href="#resources" data-i18n="footer.support">Støt</a>
+            <a href="om-projektet.html" data-i18n="footer.contact">Kontakt</a>
+            <a href="om-projektet.html" data-i18n="footer.accessibility">Tilgængelighed</a>
+            <a href="om-projektet.html" data-i18n="footer.support">Støt</a>
           </div>
           <div class="footer-column">
-            <a href="#resources" data-i18n="footer.confidential">Fortrolighed</a>
-            <a href="#resources" data-i18n="footer.privacy">Privatliv</a>
-            <a href="#resources" data-i18n="footer.terms">Vilkår</a>
+            <a href="om-projektet.html" data-i18n="footer.confidential">Fortrolighed</a>
+            <a href="om-projektet.html" data-i18n="footer.privacy">Privatliv</a>
+            <a href="om-projektet.html" data-i18n="footer.terms">Vilkår</a>
           </div>
           <div class="footer-column social-column">
-            <a href="#resources">Instagram</a>
-            <a href="#resources">Facebook</a>
-            <a href="#resources">YouTube</a>
-            <a href="#resources">X</a>
+            <a href="om-projektet.html">Instagram</a>
+            <a href="om-projektet.html">Facebook</a>
+            <a href="om-projektet.html">YouTube</a>
+            <a href="om-projektet.html">X</a>
           </div>
         </div>
       </div>
@@ -277,3 +290,4 @@
     <script src="script.js"></script>
   </body>
 </html>
+
