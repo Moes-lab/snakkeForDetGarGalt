@@ -366,7 +366,7 @@ a { color: inherit; text-decoration: none; }
   gap: 0.75rem;
   min-height: 52px;
   padding: 0.35rem 0.4rem 0.35rem 0.9rem;
-  border: 0;
+  border: 1px solid rgba(16, 32, 47, 0.12);
   border-radius: 20px;
   background: #f5f8fb;
 }
@@ -1899,16 +1899,16 @@ body.theme-dark .chat-header {
 }
 
 body.theme-dark .search-box {
-  background: #0f1522;
-  border-color: #33445d;
+  background: #ffffff;
+  border-color: rgba(16, 32, 47, 0.14);
 }
 
 body.theme-dark .search-box input {
-  color: white;
+  color: #10202f;
 }
 
 body.theme-dark .search-box input::placeholder {
-  color: #aebdcb;
+  color: #6b7481;
 }
 
 body.theme-dark .page-back-link {
