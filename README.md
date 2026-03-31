@@ -90,4 +90,4 @@ Der er også anvendt NotebookLM som støtte til at finde relevante kilder og teo
 
 ## Forfattere
 
-Projektet er udarbejdet som en del af Webteknologi / IT-Arkitektur på 1. semester.
+Projektet er udarbejdet som en del af Digital kultur/ IT-Arkitektur på 2. semester som supplernde produkt til eksamen projekt.
