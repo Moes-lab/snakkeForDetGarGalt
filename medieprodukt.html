@@ -23,18 +23,21 @@
     </a>
 
     <div class="top-banner">
-      <p data-i18n="banner.text">Der er hjælp at hente, og du behøver ikke stå alene med det.</p>
+      <p><span data-i18n="banner.text">Der er hjælp at hente, og du behøver ikke stå alene med det.</span><span class="banner-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-4.35-8.5-8A5.2 5.2 0 0 1 12 6a5.2 5.2 0 0 1 8.5 7c-2 3.65-8.5 8-8.5 8Z"/></svg></span></p>
+    </div>
+
+    <div class="contact-strip">
+      <div class="contact-strip-inner">
+        <a href="index.html#helpCards"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 5.15 12.8 19.8 19.8 0 0 1 2.08 4.09 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.63 2.62a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6.09 6.09l1.46-1.24a2 2 0 0 1 2.11-.45c.84.3 1.72.51 2.62.63A2 2 0 0 1 22 16.92z"/></svg></span><span data-i18n="utility.call">Ring</span></a>
+        <a href="index.html#helpCards"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg></span><span data-i18n="utility.text">Skriv</span></a>
+        <a href="index.html#chat"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="14" y2="13"/></svg></span><span data-i18n="utility.chat">Chat</span></a>
+      </div>
     </div>
 
     <header class="site-header">
       <div class="header-inner">
-        <button class="menu-button" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteMenu">
-          <span class="hamburger" aria-hidden="true"></span>
-          <span data-i18n="menu.button">Menu</span>
-        </button>
-
         <a class="brand" href="index.html" aria-label="SnakFørDetGårGalt.dk">
-          <img src="logo_uden_baggrund.png" alt="SnakFørDetGårGalt.dk" class="brand-image" />
+          <img src="logo-chatgpt.png" alt="SnakFørDetGårGalt.dk" class="brand-image" />
         </a>
 
         <div class="header-tools">
@@ -42,17 +45,35 @@
             <span data-lang="da">Til forsiden</span>
             <span data-lang="en" hidden>Back to home</span>
           </a>
+          <button class="menu-button" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteMenu" aria-label="Menu">
+            <span class="hamburger" aria-hidden="true"></span>
+          </button>
+          <div class="search-shell">
+            <button class="search-trigger" id="searchTrigger" type="button" aria-expanded="false" aria-controls="searchPanel" aria-label="Søg">
+              <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.65" y1="16.65" x2="21" y2="21"/></svg></span>
+            </button>
+            <div class="search-panel" id="searchPanel" hidden>
+              <div class="search-panel-inner">
+                <form class="search-box" id="searchForm" role="search">
+                  <label class="sr-only" for="siteSearch" data-i18n="search.label">Søg på siden</label>
+                  <input
+                    id="siteSearch"
+                    name="search"
+                    type="search"
+                    placeholder="Søg"
+                    data-i18n-placeholder="search.placeholder"
+                    autocomplete="off"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </header>
 
     <aside class="menu-overlay" id="siteMenu" hidden>
       <div class="menu-panel">
-        <button class="menu-close" id="menuClose" type="button">
-          <span class="close-icon" aria-hidden="true">×</span>
-          <span data-i18n="menu.close">Luk menu</span>
-        </button>
-
         <nav class="menu-list" aria-label="Hovednavigation">
           <a class="menu-item" href="index.html"><span data-i18n="menu.home">Hjem</span></a>
           <a class="menu-item" href="om-projektet.html"><span data-i18n="menu.about">Om projektet</span></a>
@@ -80,7 +101,7 @@
         </div>
       </section>
 
-      <section class="content-section">
+      <section class="content-section" id="media-overview">
         <article class="resource-card subpage-card">
           <div class="production-copy">
             <h2><span data-lang="da">Produktbeskrivelse</span><span data-lang="en" hidden>Product description</span></h2>
@@ -105,7 +126,7 @@
         </article>
       </section>
 
-      <section class="content-section">
+      <section class="content-section" id="media-ai">
         <article class="resource-card subpage-card">
           <div class="production-grid">
             <section class="production-panel">
@@ -127,7 +148,7 @@
       <div class="footer-main">
         <div class="footer-brand-block">
           <div class="footer-logo">
-          <img src="logo_uden_baggrund.png" alt="SnakFørDetGårGalt.dk" class="footer-logo-image" />
+          <img src="logo-chatgpt.png" alt="SnakFørDetGårGalt.dk" class="footer-logo-image" />
           </div>
           <p><span data-lang="da">Hvis du har brug for støtte, så ræk ud. Et trygt sted at tale, før det går galt.</span><span data-lang="en" hidden>If you need support, reach out. A safe place to talk before things go wrong.</span></p>
         </div>

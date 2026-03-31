@@ -20,7 +20,7 @@
     <a class="skip-link" href="#mainContent">Gå til indhold</a>
 
     <div class="top-banner">
-      <p data-i18n="banner.text">Der er hjælp at hente, og du behøver ikke stå alene med det.</p>
+      <p><span data-i18n="banner.text">Der er hjælp at hente, og du behøver ikke stå alene med det.</span><span class="banner-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-4.35-8.5-8A5.2 5.2 0 0 1 12 6a5.2 5.2 0 0 1 8.5 7c-2 3.65-8.5 8-8.5 8Z"/></svg></span></p>
     </div>
 
     <div class="contact-strip">
@@ -33,108 +33,98 @@
 
     <header class="site-header">
       <div class="header-inner">
-        <button class="menu-button" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteMenu">
-          <span class="hamburger" aria-hidden="true"></span>
-          <span data-i18n="menu.button">Menu</span>
-        </button>
-
         <a class="brand" href="#top" aria-label="SnakFørDetGårGalt.dk">
-          <img src="logo_uden_baggrund.png" alt="SnakFørDetGårGalt.dk" class="brand-image" />
+          <img src="logo-chatgpt.png" alt="SnakFørDetGårGalt.dk" class="brand-image" />
         </a>
 
         <div class="header-tools">
-          <button class="search-trigger" id="searchTrigger" type="button" aria-expanded="false" aria-controls="searchPanel">
-            <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.65" y1="16.65" x2="21" y2="21"/></svg></span>
-            <span data-i18n="search.button">Søg</span>
+          <button class="menu-button" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteMenu" aria-label="Menu">
+            <span class="hamburger" aria-hidden="true"></span>
           </button>
+          <div class="search-shell">
+            <button class="search-trigger" id="searchTrigger" type="button" aria-expanded="false" aria-controls="searchPanel" aria-label="Søg">
+              <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.65" y1="16.65" x2="21" y2="21"/></svg></span>
+            </button>
+            <div class="search-panel" id="searchPanel" hidden>
+              <div class="search-panel-inner">
+                <form class="search-box" id="searchForm" role="search">
+                  <label class="sr-only" for="siteSearch" data-i18n="search.label">Søg på siden</label>
+                  <input
+                    id="siteSearch"
+                    name="search"
+                    type="search"
+                    placeholder="Søg"
+                    data-i18n-placeholder="search.placeholder"
+                    autocomplete="off"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </header>
 
-    <div class="search-panel" id="searchPanel" hidden>
-      <div class="search-panel-inner">
-        <form class="search-box" id="searchForm" role="search">
-          <label class="sr-only" for="siteSearch" data-i18n="search.label">Søg på siden</label>
-          <input
-            id="siteSearch"
-            name="search"
-            type="search"
-            placeholder="Søg"
-            data-i18n-placeholder="search.placeholder"
-            autocomplete="off"
-          />
-          <button class="search-submit" type="submit" aria-label="Søg">
-            <span aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.65" y1="16.65" x2="21" y2="21"/></svg></span>
-          </button>
-        </form>
-        <button class="search-close" id="searchClose" type="button">
-          <span data-i18n="search.close">Luk</span>
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-    </div>
-
     <aside class="menu-overlay" id="siteMenu" hidden>
       <div class="menu-panel">
-        <button class="menu-close" id="menuClose" type="button">
-          <span class="close-icon" aria-hidden="true">×</span>
-          <span data-i18n="menu.close">Luk menu</span>
-        </button>
-
-        <div class="menu-quick-links">
-          <a href="#helpCards"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 5.15 12.8 19.8 19.8 0 0 1 2.08 4.09 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.63 2.62a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6.09 6.09l1.46-1.24a2 2 0 0 1 2.11-.45c.84.3 1.72.51 2.62.63A2 2 0 0 1 22 16.92z"/></svg></span><span data-i18n="utility.call">Ring</span></a>
-          <a href="#helpCards"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg></span><span data-i18n="utility.text">Skriv</span></a>
-          <a href="#chat"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="14" y2="13"/></svg></span><span data-i18n="utility.chat">Chat</span></a>
-        </div>
-
         <nav class="menu-list" aria-label="Hovednavigation">
-          <a class="menu-item" href="#top"><span data-i18n="menu.home">Hjem</span></a>
+          <div class="menu-item">
+            <a class="menu-item-link" href="#top"><span class="menu-option-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5"/><path d="M6.5 10.5V20h11v-9.5"/><path d="M10 20v-5h4v5"/></svg></span><span data-i18n="menu.home">Hjem</span></a>
+          </div>
           <details class="menu-item" open>
-            <summary><span data-i18n="menu.getHelp">Få hjælp</span></summary>
+            <summary><span class="menu-option-icon menu-help-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-4.35-8.5-8A5.2 5.2 0 0 1 12 6a5.2 5.2 0 0 1 8.5 7c-2 3.65-8.5 8-8.5 8Z"/></svg></span><span data-i18n="menu.getHelp">Få hjælp</span></summary>
             <div class="submenu">
-              <a href="#helpCards" data-i18n="submenu.expect">Hvad du kan forvente</a>
+              <a href="#helpCards"><span data-i18n="submenu.expect">Hvad du kan forvente</span>?</a>
               <a href="#chat" data-i18n="submenu.chat">Chat med os</a>
             </div>
           </details>
           <details class="menu-item">
-            <summary><span data-i18n="menu.learn">Viden</span></summary>
+            <summary><span class="menu-option-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6.5h16"/><path d="M4 12h16"/><path d="M4 17.5h10"/></svg></span><span data-i18n="menu.learn">Viden</span></summary>
             <div class="submenu">
               <a href="javascript:void(0)" aria-disabled="true" data-i18n="submenu.sources">Kilder og baggrund</a>
               <a href="javascript:void(0)" aria-disabled="true" data-i18n="submenu.prevention">Forebyggelse og dialog</a>
             </div>
           </details>
           <details class="menu-item">
-            <summary><span data-i18n="menu.involved">Bliv en del af indsatsen</span></summary>
+            <summary><span class="menu-option-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span><span data-i18n="menu.involved">Bliv en del af indsatsen</span></summary>
             <div class="submenu">
               <a href="javascript:void(0)" aria-disabled="true" data-i18n="submenu.share">Del viden</a>
               <a href="javascript:void(0)" aria-disabled="true" data-i18n="submenu.support">Støt projektet</a>
             </div>
           </details>
           <details class="menu-item">
-            <summary><span data-i18n="menu.providers">For fagpersoner</span></summary>
+            <summary><span class="menu-option-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M4 20a8 8 0 0 1 16 0"/></svg></span><span data-i18n="menu.providers">For fagpersoner</span></summary>
             <div class="submenu">
               <a href="javascript:void(0)" aria-disabled="true" data-i18n="submenu.research">Forskning</a>
               <a href="javascript:void(0)" aria-disabled="true" data-i18n="submenu.method">Metode og perspektiv</a>
             </div>
           </details>
           <details class="menu-item">
-            <summary><span data-i18n="menu.faq">FAQ</span></summary>
+            <summary><span class="menu-option-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9.25 9a2.75 2.75 0 1 1 4.58 2.04c-.92.8-1.83 1.39-1.83 2.71"/><path d="M12 17.25h.01"/></svg></span><span data-i18n="menu.faq">FAQ</span></summary>
             <div class="submenu">
               <a href="javascript:void(0)" aria-disabled="true" data-i18n="submenu.free">Er det gratis?</a>
               <a href="javascript:void(0)" aria-disabled="true" data-i18n="submenu.anonymous">Er det anonymt?</a>
             </div>
           </details>
-          <a class="menu-item" href="javascript:void(0)" aria-disabled="true"><span data-i18n="menu.media">Ressourcer</span></a>
-          <a class="menu-item" href="om-projektet.html"><span data-i18n="menu.about">Om projektet</span></a>
-          <a class="menu-item" href="javascript:void(0)" aria-disabled="true"><span data-i18n="menu.interpretation">Sprog og tilgængelighed</span></a>
-          <div class="menu-accessibility-actions">
-            <button class="theme-menu-button" type="button" id="languageToggle" aria-label="Change language">
-              <span id="languageLabel">English</span>
-            </button>
-            <button class="theme-menu-button" type="button" data-theme-toggle>
-              <span data-theme-label>Dark mode</span>
-            </button>
+          <div class="menu-item">
+            <a class="menu-item-link" href="javascript:void(0)" aria-disabled="true"><span class="menu-option-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 7.5h14"/><path d="M5 12h14"/><path d="M5 16.5h8"/></svg></span><span data-i18n="menu.media">Ressourcer</span></a>
           </div>
+          <div class="menu-item">
+            <a class="menu-item-link" href="om-projektet.html"><span class="menu-option-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8h.01"/><path d="M11 12h1v5h1"/><circle cx="12" cy="12" r="9"/></svg></span><span data-i18n="menu.about">Om projektet</span></a>
+          </div>
+          <details class="menu-item">
+            <summary><span class="menu-option-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><span data-i18n="menu.interpretation">Sprog og tilgængelighed</span></summary>
+            <div class="submenu menu-accessibility-actions">
+              <button class="theme-menu-button" type="button" id="languageToggle" aria-label="Change language">
+                <span class="menu-option-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18"/><path d="M12 3a15 15 0 0 0 0 18"/></svg></span>
+                <span id="languageLabel">English</span>
+              </button>
+              <button class="theme-menu-button" type="button" data-theme-toggle>
+                <span class="menu-option-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v2.5"/><path d="M12 18.5V21"/><path d="M4.93 4.93l1.77 1.77"/><path d="M17.3 17.3l1.77 1.77"/><path d="M3 12h2.5"/><path d="M18.5 12H21"/><path d="M4.93 19.07l1.77-1.77"/><path d="M17.3 6.7l1.77-1.77"/><circle cx="12" cy="12" r="4"/></svg></span>
+                <span data-theme-label>Dark mode</span>
+              </button>
+            </div>
+          </details>
         </nav>
 
       </div>
@@ -142,8 +132,14 @@
 
     <main id="mainContent">
       <section class="hero" id="top">
+        <div class="hero-orb-layer" aria-hidden="true">
+          <span class="hero-orb hero-orb-1"></span>
+          <span class="hero-orb hero-orb-2"></span>
+          <span class="hero-orb hero-orb-3"></span>
+          <span class="hero-orb hero-orb-4"></span>
+        </div>
         <div class="hero-inner">
-          <div class="hero-intro">
+          <div class="hero-intro" data-reveal>
             <p class="hero-kicker" data-i18n="hero.kicker">Støtte uden fordømmelse</p>
             <h1 data-i18n="hero.title">Hvis du har brug for at tale, er vi her.</h1>
 
@@ -161,18 +157,18 @@
       </section>
 
       <section class="content-section feature-stack">
-        <article class="feature-band feature-band-left">
+        <article class="feature-band feature-band-left" data-reveal>
           <div class="feature-visual teal-visual">
             <img class="feature-image" src="feature-first.jpg" alt="Ung mand med telefon i hånden" />
           </div>
           <div class="feature-copy-card">
-            <p class="eyebrow" data-i18n="expect.eyebrow">Hvad du kan forvente</p>
+              <p class="eyebrow"><span data-i18n="expect.eyebrow">Hvad du kan forvente</span>?</p>
             <h2 data-i18n="expect.title">Et trygt første skridt</h2>
             <p data-i18n="expect.body">Projektet er lavet for at forebygge misogyniske og destruktive tankemønstre gennem støtte, refleksion og tidlig dialog. Her er tonen rolig, respektfuld og uden fordømmelse.</p>
           </div>
         </article>
 
-        <article class="feature-band feature-band-right">
+        <article class="feature-band feature-band-right" data-reveal>
           <div class="feature-visual forest-visual">
             <img class="feature-image" src="feature-second.webp" alt="Ung person og voksen i en alvorlig samtale" />
           </div>
@@ -183,7 +179,7 @@
           </div>
         </article>
 
-        <article class="feature-band feature-band-left">
+        <article class="feature-band feature-band-left" data-reveal>
           <div class="feature-visual rose-visual">
             <img class="feature-image" src="feature-expect.webp" alt="To personer tæt sammen i et trygt øjeblik" />
           </div>
@@ -195,7 +191,7 @@
         </article>
       </section>
 
-      <section class="chat-section" id="chat">
+      <section class="chat-section" id="chat" data-reveal>
         <div class="chat-shell" aria-label="Chatboks">
           <div class="chat-header">
             <div>
@@ -214,13 +210,21 @@
 
           <form class="chat-input" id="chatForm">
             <label class="sr-only" for="messageInput" data-i18n="chat.inputLabel">Skriv en besked</label>
-            <input id="messageInput" name="message" type="text" maxlength="280" placeholder="Skriv din besked her..." autocomplete="off" />
-            <button type="submit" class="primary-button" data-i18n="chat.send">Send</button>
+            <div class="chat-input-shell">
+              <input id="messageInput" name="message" type="text" maxlength="280" placeholder="Skriv din besked her..." autocomplete="off" />
+              <button type="submit" class="primary-button chat-send-button" aria-hidden="true" tabindex="-1">
+                <span class="sr-only" data-i18n="chat.send">Send</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M12 18V7"></path>
+                  <path d="M7 12l5-5 5 5"></path>
+                </svg>
+              </button>
+            </div>
           </form>
         </div>
       </section>
 
-      <section class="content-section" id="production">
+      <section class="content-section" id="production" data-reveal>
         <article class="resource-card production-card resource-layout">
           <div class="production-copy resource-copy">
             <h2>
@@ -245,11 +249,9 @@
             </a>
           </div>
           <div class="resource-image-wrap">
-            <img class="resource-image" src="resource-side.png" alt="Forsidebillede om projektets baggrund" />
-            <a class="resource-download" href="resource-side.png" download="Projekt.doc.forside.png">
-              <span data-lang="da">Download projektet</span>
-              <span data-lang="en" hidden>Download the project</span>
-            </a>
+            <video class="resource-video" controls playsinline preload="metadata">
+              <source src="produkt-video.mp4" type="video/mp4" />
+            </video>
           </div>
         </article>
       </section>
@@ -260,9 +262,8 @@
       <div class="footer-main">
         <div class="footer-brand-block">
           <div class="footer-logo">
-          <img src="logo_uden_baggrund.png" alt="SnakFørDetGårGalt.dk" class="footer-logo-image" />
+          <img src="logo-chatgpt.png" alt="SnakFørDetGårGalt.dk" class="footer-logo-image" />
           </div>
-          <p data-i18n="footer.tagline">Hvis du har brug for støtte, så ræk ud. Et trygt sted at tale, før det går galt.</p>
         </div>
 
         <div class="footer-links-grid">
@@ -282,6 +283,9 @@
             <a href="javascript:void(0)" aria-disabled="true">YouTube</a>
             <a href="javascript:void(0)" aria-disabled="true">X</a>
           </div>
+        </div>
+        <div class="footer-tagline-box">
+          <p data-i18n="footer.tagline">Hvis du har brug for støtte, så ræk ud. Et trygt sted at tale, før det går galt.</p>
         </div>
       </div>
     </footer>
