@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Analyse | SnakFørDetGårGalt.dk</title>
+    <title>Analyse | SnakForDetGarGalt.dk</title>
     <meta
       name="description"
-      content="Læs analysen bag SnakFørDetGårGalt.dk og projektets arbejde med digitale fællesskaber, algoritmer og forebyggelse."
+      content="Projektets fulde analyse om incel-kultur, algoritmer og unge maends digitale adfaerd."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,147 +16,301 @@
     />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <a class="skip-link" href="#mainContent">
-      <span data-lang="da">Gå til indhold</span>
-      <span data-lang="en" hidden>Skip to content</span>
-    </a>
-
+  <body class="analysis-page">
+    <a class="skip-link" href="#mainContent">Ga til indhold</a>
     <div class="top-banner">
-      <p><span data-i18n="banner.text">Der er hjælp at hente, og du behøver ikke stå alene med det.</span><span class="banner-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-4.35-8.5-8A5.2 5.2 0 0 1 12 6a5.2 5.2 0 0 1 8.5 7c-2 3.65-8.5 8-8.5 8Z"/></svg></span></p>
+      <p>
+        Der er hjaelp at hente, og du behoever ikke sta alene med det.
+        <span class="banner-icon" aria-hidden="true"
+          ><svg viewBox="0 0 24 24">
+            <path d="M12 21s-6.5-4.35-8.5-8A5.2 5.2 0 0 1 12 6a5.2 5.2 0 0 1 8.5 7c-2 3.65-8.5 8-8.5 8Z" /></svg
+        ></span>
+      </p>
     </div>
-
     <div class="contact-strip">
       <div class="contact-strip-inner">
-        <a href="index.html#helpCards"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 5.15 12.8 19.8 19.8 0 0 1 2.08 4.09 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.63 2.62a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6.09 6.09l1.46-1.24a2 2 0 0 1 2.11-.45c.84.3 1.72.51 2.62.63A2 2 0 0 1 22 16.92z"/></svg></span><span data-i18n="utility.call">Ring</span></a>
-        <a href="index.html#helpCards"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg></span><span data-i18n="utility.text">Skriv</span></a>
-        <a href="index.html#chat"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="14" y2="13"/></svg></span><span data-i18n="utility.chat">Chat</span></a>
+        <a href="index.html#helpCards">Ring</a><a href="index.html#helpCards">Skriv</a
+        ><a href="index.html#chat">Chat</a>
       </div>
     </div>
-
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="index.html" aria-label="SnakFørDetGårGalt.dk">
-          <img src="logo-chatgpt.png" alt="SnakFørDetGårGalt.dk" class="brand-image" />
-        </a>
-
+        <a class="brand" href="index.html"
+          ><img src="logo-chatgpt.png" alt="SnakForDetGarGalt.dk" class="brand-image"
+        /></a>
         <div class="header-tools">
-          <a class="page-back-link" href="index.html">
-            <span data-lang="da">Til forsiden</span>
-            <span data-lang="en" hidden>Back to home</span>
-          </a>
-          <button class="menu-button" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteMenu" aria-label="Menu">
+          <button
+            class="menu-button"
+            id="menuToggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="siteMenu"
+            aria-label="Menu"
+          >
             <span class="hamburger" aria-hidden="true"></span>
           </button>
-          <div class="search-shell">
-            <button class="search-trigger" id="searchTrigger" type="button" aria-expanded="false" aria-controls="searchPanel" aria-label="Søg">
-              <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.65" y1="16.65" x2="21" y2="21"/></svg></span>
-            </button>
-            <div class="search-panel" id="searchPanel" hidden>
-              <div class="search-panel-inner">
-                <form class="search-box" id="searchForm" role="search">
-                  <label class="sr-only" for="siteSearch" data-i18n="search.label">Søg på siden</label>
-                  <input
-                    id="siteSearch"
-                    name="search"
-                    type="search"
-                    placeholder="Søg"
-                    data-i18n-placeholder="search.placeholder"
-                    autocomplete="off"
-                  />
-                </form>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </header>
-
     <aside class="menu-overlay" id="siteMenu" hidden>
       <div class="menu-panel">
         <nav class="menu-list" aria-label="Hovednavigation">
-          <a class="menu-item" href="index.html"><span data-i18n="menu.home">Hjem</span></a>
-          <a class="menu-item" href="om-projektet.html"><span data-i18n="menu.about">Om projektet</span></a>
-          <a class="menu-item" href="analyse.html"><span data-lang="da">Analyse</span><span data-lang="en" hidden>Analysis</span></a>
-          <a class="menu-item" href="medieprodukt.html"><span data-lang="da">Medieprodukt</span><span data-lang="en" hidden>Media Product</span></a>
-          <a class="menu-item" href="javascript:void(0)" aria-disabled="true"><span data-i18n="menu.interpretation">Sprog og tilgængelighed</span></a>
-          <div class="menu-accessibility-actions">
-            <button class="theme-menu-button" type="button" id="languageToggle" aria-label="Change language">
-              <span id="languageLabel">English</span>
-            </button>
-            <button class="theme-menu-button" type="button" data-theme-toggle>
-              <span data-theme-label>Dark mode</span>
-            </button>
+          <div class="menu-item"><a class="menu-item-link" href="index.html#top"><span>Hjem</span></a></div>
+          <div class="menu-item">
+            <a class="menu-item-link" href="om-projektet.html#top"><span>Om projektet</span></a>
           </div>
+          <div class="menu-item"><a class="menu-item-link" href="teori.html#top"><span>Teori</span></a></div>
+          <div class="menu-item"><a class="menu-item-link" href="metode.html#top"><span>Metode</span></a></div>
+          <div class="menu-item"><a class="menu-item-link" href="analyse.html#top"><span>Analyse</span></a></div>
+          <div class="menu-item">
+            <a class="menu-item-link" href="diskussion.html#top"><span>Diskussion</span></a>
+          </div>
+          <div class="menu-item">
+            <a class="menu-item-link" href="konklusion.html#top"><span>Konklusion</span></a>
+          </div>
+          <div class="menu-item">
+            <a class="menu-item-link" href="medieprodukt.html#top"><span>Produktionsproces</span></a>
+          </div>
+          <div class="menu-item">
+            <a class="menu-item-link" href="litteraturliste.html#top"><span>Litteraturliste</span></a>
+          </div>
+          <div class="menu-item">
+            <a class="menu-item-link" href="brug-af-ai.html#top"><span>Brug af AI</span></a>
+          </div>
+          <div class="menu-item"><a class="menu-item-link" href="bilag.html#top"><span>Bilag</span></a></div>
         </nav>
       </div>
     </aside>
-
     <main id="mainContent">
       <section class="subpage-hero" id="top">
         <div class="content-section">
-          <p class="eyebrow"><span data-lang="da">Analyse</span><span data-lang="en" hidden>Analysis</span></p>
-          <h1 class="subpage-title"><span data-lang="da">Diskursanalyse og målgruppeforståelse</span><span data-lang="en" hidden>Discourse analysis and understanding the target group</span></h1>
-          <p class="subpage-lead"><span data-lang="da">Analysen undersøger, hvordan online indhold, algoritmer og fællesskaber kan påvirke unge mænd i en negativ retning, og hvorfor tidlig dialog er vigtig.</span><span data-lang="en" hidden>The analysis explores how online content, algorithms, and communities can influence young men in a negative direction, and why early dialogue matters.</span></p>
+          <h1 class="subpage-title">Analyse</h1>
+          <p class="subpage-lead">
+            I denne analyse vil vi belyse, hvordan incel-kulturen og manosfaerens ideer paavirker
+            unge danske maend gennem deres brug af sociale medier. Analysen bestar af tre dele.
+            Forst undersoger vi, hvordan incel-kulturen paavirker unges digitale adfaerd pa sociale
+            medier, baseret pa vores interviews med tre drenge mellem 15 og 18 ar. Dernaest
+            undersoger vi, hvordan selve incel-miljoet paavirker unge maends selvopfattelse og
+            digitale adfaerd gennem centrale diskurser som "looksmaxxing", "hypergami" og
+            "80/20-reglen". Til sidst undersoger vi, hvordan sociale mediers anbefalingsalgoritmer
+            bidrager til at udbrede incel-kultur og manosfaerisk indhold. Vi bruger her en rapport
+            fra Dublin City University. Tilsammen giver de tre analysedele et samlet indblik i,
+            hvordan psykologi, digitale teknikker og sociale faellesskaber arbejder sammen om at
+            forme drenge og unge maends forstaelse af kon, identitet og faellesskab i 2026.
+          </p>
+          <p>
+            <img class="resource-image analysis-small-image" src="incel-closeup.jpg" alt="Nærbillede af ordet incel" />
+          </p>
+          <section class="analysis-flow">
+        <article class="resource-card subpage-card">
+          <div class="production-copy resource-copy">
+            <h2>Hvordan oplever unge danske maend det indhold, de bliver praesenteret for pa sociale medier?</h2>
+            <p>
+              I dag tilbringer unge mennesker i gennemsnit 2 timer og 40 minutter dagligt pa sociale
+              medier (Forskere afliver myte om unges brug af sociale medier - men peger pa sarbar
+              gruppe, 2025). Det betyder, at en stor del af deres hverdag foregar online, hvor
+              algoritmer bestemmer, hvad de ser. Disse algoritmer er ikke neutrale, idet de viser
+              indhold, der fanger opmaerksomheden, og ofte det indhold, der appellerer til
+              usikkerheder, kropsidealer eller traditionelle forestillinger om, hvad det vil sige at
+              vaere en "rigtig mand" (Forundersogelse - Incelfaellesskaber i stor vaekst, 2025).
+            </p>
+            <p>
+              Undersogelser fra CDP viser, at incel-kulturen, der fremmer ekstreme konsopfattelser,
+              er i stor vaekst: "antallet af medlemmer pa incel-siden looksmax.org er vokset til
+              over det tidobbelte pa fem ar". Selvom det er internationale tal, er der ingen tvivl
+              om, at disse ideer ogsa nar danske unge. Problemet er ikke afgraenset til, hvorvidt
+              unge maend identificerer sig med incel-kulturen. Problemet drejer sig ogsa om, at de
+              bliver udsat for incel-kulturen - ofte uden at de selv laegger maerke til det. Ord
+              som "looksmaxxing", "sigma" og "mewing" dukker op i deres feed, og selvom unge ikke
+              ser alvoren i dette, former det alligevel deres syn pa, hvad det vil sige at vaere
+              mand i 2026.
+            </p>
+            <p>
+              Vi har interviewet tre drenge mellem 15 og 18 ar om deres brug af sociale medier. De
+              bruger primaert TikTok, YouTube, Discord, Snapchat og Instagram og tilbringer mellem 3
+              og 5 timer dagligt pa sociale medier, hvilket er lidt over gennemsnittet. Faelles for
+              dem er, at de sjaeldent aktivt soger efter indhold. I stedet lader de algoritmerne
+              bestemme, hvad de ser. En af dem fortaeller: "Indhold finder jeg sjaeldent selv, da
+              jeg lader app'en selv finde det. Hvis jeg har 'liket' en lignende video for,
+              opfanger appen det og viser mig lignende videoer."
+            </p>
+            <p>
+              Ifolge Shoshana Zuboff er denne made, hvorpa sociale medier styrer, hvad vi ser, ikke
+              tilfaeldig. Det er den made overvagningskapitalismen fungerer. Vi ser her konkret,
+              hvordan drengene ser videoer, der leder til nye videoer, der igen leder til nye
+              videoer uden at de aktivt har sogt nyt indhold. Algoritmen forsoger at forudsige,
+              hvad drengene vil se naeste gang. De bliver lokket eller puffet i en bestemt retning.
+              Det kalder Zuboff for tuning.
+            </p>
+            <blockquote class="production-quote">
+              "Jeg har aldrig taenkt over, hvorfor nogle videoer dukker op. Jeg scroller bare
+              videre, hvis det ikke interesserer mig."<br />
+              "Nogle gange ser jeg videoer om bodybuilding eller penge, men det er bare noget, der
+              kommer op. Jeg ved ikke, hvorfor."<br />
+              "Jeg bruger mest YouTube og TikTok, og der kommer der bare videoer om, hvordan man
+              bliver bedre - uden at jeg har sogt efter det."
+            </blockquote>
+            <p>
+              Disse citater viser, at drengene pa den ene side oplever, at de styrer deres
+              medieforbrug, men pa den anden side beskriver deres egne udsagn ogsa, at de alligevel
+              bliver pavirket. En af drengene beskriver, hvordan han i starten modtog fa videoer om
+              bodybuilding, men efterhanden som han sa dem, begyndte algoritmen at vise ham flere og
+              flere, hvilket fik ham til at reflektere over sit eget udseende. Zuboffs teori om
+              shadow text og tuning hjaelper med at forklare, hvorfor denne pavirkning er svaer at
+              gennemskue.
+            </p>
+          </div>
+        </article>
+        <article class="resource-card subpage-card">
+          <div class="production-copy resource-copy">
+            <h2>Hvordan pavirker incel-relateret indhold unge danske maends selvopfattelse og maskulinitetsforstaelse i dag?</h2>
+            <p>
+              Denne analysedel handler om, hvordan incel-kulturen pavirker medlemmernes
+              selvopfattelse og digitale adfaerd gennem de diskurser, vi har identificeret. Som vi
+              skrev i metodeafsnittet, har vi kigget efter gentagne ord som "looksmaxxing",
+              "alpha/sigma", "80/20-reglen" og "hypergami", samt hvordan "Os og Dem"-taenkning kan
+              komme til udtryk i videoer, hashtags og kommentarer. For at undersoge hvilke ord der
+              bliver brugt, har vi kigget pa Reddit og taget udgangspunkt i artiklen: Incels og
+              80/20 reglen.
+            </p>
+            <p>
+              <img class="resource-image" src="what-is-an-incel.webp" alt="What is an incel" />
+            </p>
+            <p>
+              Saerligt ses det i, hvordan personlig usikkerhed gradvist omformes til faste
+              forklaringer og identiteter. I monsteret om selvoptimering bliver individets vaerdi
+              koblet til praestation, hvilket kan skabe en oplevelse af utilstraekkelighed og skyld,
+              hvor problemer ikke laengere ses som personlige, men som kollektive. Her kan Ulrik
+              Falktofts "Os og Dem"-modellen bruges. Modellen viser, hvordan mennesker opdeler
+              verden i grupper, hvor empati og moralsk ansvar er hojest over for mine egne og
+              gradvist falder over for de "andre". I manosfaeren kan denne proces tydeligt
+              observeres som en bevaegelse gennem modellens forskellige lag.
+            </p>
+            <p>
+              Udgangspunktet for mange medlemmer er en oplevelse af sarbarhed. Eksempler fra Reddit
+              viser, hvordan unge maend beskriver ensomhed, usikkerhed omkring udseende, hojde og
+              gentagne afvisninger fra kvinder. En person skriver f.eks. at: "because I'm 5 '4 and
+              ugly. Subsequently this has started to turn me into more and more of an incel".
+              Denne sarbarhed fungerer som indgang til faellesskabet, hvor medlemmerne hurtigt
+              oplever en folelse af at hore til.
+            </p>
+            <p>
+              I artiklen Incels og 80/20 reglen behandles, hvordan diskurser som 80/20 udnytter
+              unge maends sarbarhed ved at bruge hjemmelavede teorier. Samtidig bruges begrebet
+              hypergami til at forklare kvinders partnervalg som arsag til maends ensomhed. Disse
+              forklaringer gor personlige oplevelser til en kollektiv sandhed og styrker folelsen af
+              samhorighed. I naeste fase aendres medlemmernes syn pa kvinder, hvor de ikke laengere
+              ses som individer, men som funktionelle. Dette understottes af influencers som Andrew
+              Tate's budskaber, hvor menneskelige relationer ses som transaktioner, og hvor mandens
+              vaerdi baseres pa okonomisk status, dominans, fysisk overlegenhed og udseende.
+            </p>
+            <p>
+              <img class="resource-image" src="elliot-roger.jpg" alt="Elliot Rodger" />
+            </p>
+            <p>
+              Analyse af sarbarhed er central, for det er ikke blot selve usikkerheden, men den
+              folelse af desperation og angst, som incel-kulturen aktivt jagter. Radikalisering
+              fuldendes, nar denne sarbarhed bliver til et ressentiment. En dyb og bitter folelse
+              af, at samfundet har lojet for ham. Her begynder medlemmerne at placere sig selv i
+              "mine egne", mens kvinden og samfundet placeres som fjendtlige.
+            </p>
+            <p>
+              I Lag 5 udvikles dette til direkte fjendtlighed, hvor kvinder og samfundet ses som
+              "de farlige". Det er denne mekaniske vrede, der gor figurer som den amerikanske unge
+              mand, Elliot Rodger, til symboler pa modstand. I 2014 begik han drab pa seks
+              personer, herunder to kvinder. Han var motiveret af had mod kvinder og en oplevelse af
+              afvisning. Efterfolgende begik han selvmord og er siden blevet ophojet som en form for
+              martyr i incel-kulturen.
+            </p>
+            <p>
+              Samlet set pavirker miljoet medlemmernes selvopfattelse ved at omforme personlig
+              usikkerhed til en kollektiv identitet baseret pa vrede og determinisme. Samtidig formes
+              den digitale adfaerd gennem platformens strukturer, der belonner og forstaerker
+              ekstreme holdninger. Resultatet er et selvforstaerkende system, hvor psykologisk
+              sarbarhed og algoritmisk logik arbejder sammen og fastholder individet i en polariseret
+              og fjendtlig verdensforstaelse.
+            </p>
+          </div>
+        </article>
+        <article class="resource-card subpage-card">
+          <div class="production-copy resource-copy">
+            <h2>Hvordan bidrager sociale mediers anbefalingsalgoritmer til udbredelsen af incel-relateret indhold?</h2>
+            <p>
+              For at kigge naermere pa algoritmer og deres betydning for incel-kulturen har vi taget
+              udgangspunkt i Dublin City University's rapport "Recommending Toxicity: The role of
+              algorithmic recommender functions on YouTube Shorts and TikTok in promoting male
+              supremacist influencers". Her undersoges det, hvordan YouTube og TikTok spiller en
+              rolle i formning af disse faellesskaber, og hvordan algoritmer og indhold spiller en
+              rolle i forhold til udbredelsen af manosfaeren og toxic indhold. Rapporten kommer bl.a.
+              frem til at deres fire fiktive brugere far alle sammen vist toxic eller manosfaerisk
+              indhold efter blot 23 minutter, hvoraf den hurtigste bruger far det vist efter 9
+              minutter og 15 sekunder.
+            </p>
+            <p>
+              Ifolge Shoshana Zuboffs teori findes der den tilstand, hun kalder "The Machine Zone",
+              som i dette tilfaelde forklarer algoritmens evne til at forme brugerens vej og
+              fastholde brugerens opmaerksomhed. Sociale medier opfordrer os til at interagere med
+              appen. Den storste opmuntring i nyere tid er den endelose scrolling, som man finder pa
+              alle sociale medier. Her kan brugeren udforske andres opslag i en uendelighed. Mediet
+              prover pa at holde brugeren interesseret sa laenge som muligt ved hjaelp af malrettet
+              indhold ud fra algoritmer.
+            </p>
+            <p>
+              <img class="resource-image" src="youtube-manosphere-chart.png" alt="Graf over YouTube manosphere-curious udvikling" />
+            </p>
+            <blockquote class="production-quote">
+              "Once an account showed interest by watching manosphere content, the amount rapidly
+              increased. By the last round of the experiment (i.e. after 400 videos or 2-3 hours
+              viewing), the vast majority of the content being recommended to the phones was
+              problematic or toxic (TikTok 76% and YouTube Shorts 78%), primarily falling into the
+              manosphere (alpha male and anti-feminist) category."
+            </blockquote>
+            <p>
+              Det vil sige, at sociale medier malrettet viser mere indhold uanset moral og etik, hvis
+              dette kan holde brugeren interesseret pa platformen. Tarleton Gillespie kommer med en
+              tese i sin teori: "Sociale medieplatforme fungerer som private regulatorer af den
+              offentlige samtale". Sociale medier har magten til at aendre diskursen pa deres
+              platform, men det virker til, at der ikke bliver gjort meget ved det i dette tilfaelde.
+              Netop denne offentlige mening er relevant i incel-kulturen og dens udbredelse. Den
+              offentlige mening i den digitale verden har langsomt normaliseret udtryk fra
+              incel-kulturen og givet radikale mennesker plads til at fremfore deres sag for
+              manosfaeren og i forlaengelse heraf incel-kulturen.
+            </p>
+          </div>
+        </article>
+          </section>
         </div>
       </section>
-
-      <section class="content-section" id="analysis-overview">
-        <article class="resource-card subpage-card">
-          <div class="production-copy">
-            <h2><span data-lang="da">Analysens fokus</span><span data-lang="en" hidden>Focus of the analysis</span></h2>
-            <p><span data-lang="da">Vores diskursanalyse tager udgangspunkt i, hvordan bestemte fortællinger gentages og normaliseres i digitale miljøer. Humor, ironi og korte, skarpe budskaber kan gøre ekstreme holdninger lettere at dele og sværere at gennemskue.</span><span data-lang="en" hidden>Our discourse analysis focuses on how certain narratives are repeated and normalized in digital environments. Humor, irony, and short sharp messages can make extreme attitudes easier to share and harder to recognize.</span></p>
-            <p><span data-lang="da">Vi ser især på, hvordan algoritmestyrede platforme kan forstærke indhold, der skaber vrede, afmagt og polarisering. Når den samme type budskaber dukker op igen og igen, kan de opleves som mere almindelige og mere legitime.</span><span data-lang="en" hidden>We especially look at how algorithm-driven platforms can amplify content that creates anger, powerlessness, and polarization. When the same type of messages appears again and again, they can feel more common and more legitimate.</span></p>
-          </div>
-        </article>
-      </section>
-
-      <section class="content-section" id="analysis-target-group">
-        <article class="resource-card subpage-card">
-          <div class="production-grid">
-            <section class="production-panel">
-              <h3><span data-lang="da">Målgruppe</span><span data-lang="en" hidden>Target group</span></h3>
-              <p><span data-lang="da">Målgruppen er unge mænd, som kan føle sig isolerede, frustrerede eller afviste, og som derfor er sårbare over for fællesskaber, der tilbyder enkle forklaringer og fjendebilleder.</span><span data-lang="en" hidden>The target group is young men who may feel isolated, frustrated, or rejected, and are therefore vulnerable to communities that offer simple explanations and enemies.</span></p>
-            </section>
-            <section class="production-panel">
-              <h3><span data-lang="da">Formål</span><span data-lang="en" hidden>Purpose</span></h3>
-              <p><span data-lang="da">Formålet er at skabe refleksion og forebyggelse. Vi vil vise, hvordan de digitale fortællinger opbygges, og pege på behovet for støtte, alternative fællesskaber og tidlige samtaler.</span><span data-lang="en" hidden>The purpose is to create reflection and prevention. We want to show how digital narratives are built and point to the need for support, alternative communities, and early conversations.</span></p>
-            </section>
-          </div>
-        </article>
-      </section>
-
-      <section class="content-section" id="analysis-sources">
-        <article class="resource-card subpage-card">
-          <div class="production-copy">
-            <h2><span data-lang="da">Litteratur og kilder</span><span data-lang="en" hidden>Literature and sources</span></h2>
-            <ul class="production-list">
-              <li>Zuboff, Shoshana (2019). The Age of Surveillance Capitalism. PublicAffairs.</li>
-              <li>Gillespie, Tarleton (2018). Custodians of the Internet. Yale University Press.</li>
-              <li>Falktoft Ulrik (2025). Os og Dem. Materiale til Digital Kultur, Erhvervsakademi København.</li>
-              <li><a href="https://laeremiddel.dk/wp-content/uploads/2021/04/Diskursanalyse_printversion_2020.pdf" target="_blank" rel="noreferrer">Læremiddel.dk (2020). Diskursanalyse.</a></li>
-              <li>Izotova, N., Polishchuk, M., Taranik-Tkachuk, K. (2021). Discourse analysis and digital technologies.</li>
-              <li><a href="https://www.dcu.ie/sites/default/files/advanced_processing_technology_editor/2025-12/1.-recommending-toxicity_the-role-of-algorithmic-recommender-functions-on-youtube-shorts-and-tiktok-in-promoting-male-supremacist-influencers-2.pdf" target="_blank" rel="noreferrer">Baker, Ging & Brandt Andreasen (2024). Recommending Toxicity.</a></li>
-              <li><a href="https://cfdp.dk/wp-content/uploads/2025/04/Forundersoegelse-Incelfaellesskaber-i-stor-vaekst-Center-for-Digital-Paedagogik.pdf" target="_blank" rel="noreferrer">Center for Digital Pædagogik (2025). Forundersøgelse af incel-fællesskaber i stor vækst.</a></li>
-              <li><a href="https://videnskab.dk/kultur-samfund/incels-og-80-20-reglen-forstaa-forskning-bag-kvindehadet-i-ny-tv-serie/" target="_blank" rel="noreferrer">Videnskab.dk: Incels og 80/20-reglen.</a></li>
-            </ul>
-          </div>
-        </article>
-      </section>
     </main>
-
     <footer class="site-footer">
-      <a class="return-top" href="#top"><span data-lang="da">Tilbage til toppen ↑</span><span data-lang="en" hidden>Back to top ↑</span></a>
+      <a class="return-top" href="#top">Tilbage til toppen ↑</a>
       <div class="footer-main">
         <div class="footer-brand-block">
           <div class="footer-logo">
-          <img src="logo-chatgpt.png" alt="SnakFørDetGårGalt.dk" class="footer-logo-image" />
+            <img src="logo-chatgpt.png" alt="SnakForDetGarGalt.dk" class="footer-logo-image" />
           </div>
-          <p><span data-lang="da">Hvis du har brug for støtte, så ræk ud. Et trygt sted at tale, før det går galt.</span><span data-lang="en" hidden>If you need support, reach out. A safe place to talk before things go wrong.</span></p>
         </div>
+        <div class="footer-links-grid">
+          <div class="footer-column">
+            <a href="javascript:void(0)" aria-disabled="true">Kontakt</a>
+            <a href="javascript:void(0)" aria-disabled="true">Tilgaengelighed</a>
+            <a href="javascript:void(0)" aria-disabled="true">Stot</a>
+          </div>
+          <div class="footer-column">
+            <a href="javascript:void(0)" aria-disabled="true">Fortrolighed</a>
+            <a href="javascript:void(0)" aria-disabled="true">Privatliv</a>
+            <a href="javascript:void(0)" aria-disabled="true">Vilkar</a>
+          </div>
+          <div class="footer-column social-column">
+            <a href="javascript:void(0)" aria-disabled="true">Instagram</a>
+            <a href="javascript:void(0)" aria-disabled="true">Facebook</a>
+            <a href="javascript:void(0)" aria-disabled="true">YouTube</a>
+            <a href="javascript:void(0)" aria-disabled="true">X</a>
+          </div>
+        </div>
+        <div class="footer-tagline-box"><p>Hvis du har brug for at tale, er vi her.</p></div>
       </div>
     </footer>
-
     <script src="script.js"></script>
   </body>
 </html>

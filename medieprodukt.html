@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Medieprodukt | SnakFørDetGårGalt.dk</title>
+    <title>Produktionsproces | SnakForDetGarGalt.dk</title>
     <meta
       name="description"
-      content="Se medieproduktet bag SnakFørDetGårGalt.dk og læs om videoens formål, dramaturgi og brugen af AI i processen."
+      content="Produktionsproces, video, hjemmeside og kreative valg bag medieproduktet."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,145 +16,175 @@
     />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <a class="skip-link" href="#mainContent">
-      <span data-lang="da">Gå til indhold</span>
-      <span data-lang="en" hidden>Skip to content</span>
-    </a>
-
+  <body class="analysis-page media-page">
+    <a class="skip-link" href="#mainContent">Ga til indhold</a>
     <div class="top-banner">
-      <p><span data-i18n="banner.text">Der er hjælp at hente, og du behøver ikke stå alene med det.</span><span class="banner-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-4.35-8.5-8A5.2 5.2 0 0 1 12 6a5.2 5.2 0 0 1 8.5 7c-2 3.65-8.5 8-8.5 8Z"/></svg></span></p>
+      <p>
+        Der er hjaelp at hente, og du behoever ikke sta alene med det.
+        <span class="banner-icon" aria-hidden="true"
+          ><svg viewBox="0 0 24 24">
+            <path d="M12 21s-6.5-4.35-8.5-8A5.2 5.2 0 0 1 12 6a5.2 5.2 0 0 1 8.5 7c-2 3.65-8.5 8-8.5 8Z" /></svg
+        ></span>
+      </p>
     </div>
-
     <div class="contact-strip">
       <div class="contact-strip-inner">
-        <a href="index.html#helpCards"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 5.15 12.8 19.8 19.8 0 0 1 2.08 4.09 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.63 2.62a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6.09 6.09l1.46-1.24a2 2 0 0 1 2.11-.45c.84.3 1.72.51 2.62.63A2 2 0 0 1 22 16.92z"/></svg></span><span data-i18n="utility.call">Ring</span></a>
-        <a href="index.html#helpCards"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg></span><span data-i18n="utility.text">Skriv</span></a>
-        <a href="index.html#chat"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="14" y2="13"/></svg></span><span data-i18n="utility.chat">Chat</span></a>
+        <a href="index.html#helpCards">Ring</a><a href="index.html#helpCards">Skriv</a
+        ><a href="index.html#chat">Chat</a>
       </div>
     </div>
-
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="index.html" aria-label="SnakFørDetGårGalt.dk">
-          <img src="logo-chatgpt.png" alt="SnakFørDetGårGalt.dk" class="brand-image" />
-        </a>
-
+        <a class="brand" href="index.html"
+          ><img src="logo-chatgpt.png" alt="SnakForDetGarGalt.dk" class="brand-image"
+        /></a>
         <div class="header-tools">
-          <a class="page-back-link" href="index.html">
-            <span data-lang="da">Til forsiden</span>
-            <span data-lang="en" hidden>Back to home</span>
-          </a>
-          <button class="menu-button" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteMenu" aria-label="Menu">
+          <button
+            class="menu-button"
+            id="menuToggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="siteMenu"
+            aria-label="Menu"
+          >
             <span class="hamburger" aria-hidden="true"></span>
           </button>
-          <div class="search-shell">
-            <button class="search-trigger" id="searchTrigger" type="button" aria-expanded="false" aria-controls="searchPanel" aria-label="Søg">
-              <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.65" y1="16.65" x2="21" y2="21"/></svg></span>
-            </button>
-            <div class="search-panel" id="searchPanel" hidden>
-              <div class="search-panel-inner">
-                <form class="search-box" id="searchForm" role="search">
-                  <label class="sr-only" for="siteSearch" data-i18n="search.label">Søg på siden</label>
-                  <input
-                    id="siteSearch"
-                    name="search"
-                    type="search"
-                    placeholder="Søg"
-                    data-i18n-placeholder="search.placeholder"
-                    autocomplete="off"
-                  />
-                </form>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </header>
-
     <aside class="menu-overlay" id="siteMenu" hidden>
       <div class="menu-panel">
         <nav class="menu-list" aria-label="Hovednavigation">
-          <a class="menu-item" href="index.html"><span data-i18n="menu.home">Hjem</span></a>
-          <a class="menu-item" href="om-projektet.html"><span data-i18n="menu.about">Om projektet</span></a>
-          <a class="menu-item" href="analyse.html"><span data-lang="da">Analyse</span><span data-lang="en" hidden>Analysis</span></a>
-          <a class="menu-item" href="medieprodukt.html"><span data-lang="da">Medieprodukt</span><span data-lang="en" hidden>Media Product</span></a>
-          <a class="menu-item" href="javascript:void(0)" aria-disabled="true"><span data-i18n="menu.interpretation">Sprog og tilgængelighed</span></a>
-          <div class="menu-accessibility-actions">
-            <button class="theme-menu-button" type="button" id="languageToggle" aria-label="Change language">
-              <span id="languageLabel">English</span>
-            </button>
-            <button class="theme-menu-button" type="button" data-theme-toggle>
-              <span data-theme-label>Dark mode</span>
-            </button>
+          <div class="menu-item"><a class="menu-item-link" href="index.html#top"><span>Hjem</span></a></div>
+          <div class="menu-item">
+            <a class="menu-item-link" href="om-projektet.html#top"><span>Om projektet</span></a>
           </div>
+          <div class="menu-item"><a class="menu-item-link" href="teori.html#top"><span>Teori</span></a></div>
+          <div class="menu-item"><a class="menu-item-link" href="metode.html#top"><span>Metode</span></a></div>
+          <div class="menu-item"><a class="menu-item-link" href="analyse.html#top"><span>Analyse</span></a></div>
+          <div class="menu-item">
+            <a class="menu-item-link" href="diskussion.html#top"><span>Diskussion</span></a>
+          </div>
+          <div class="menu-item">
+            <a class="menu-item-link" href="konklusion.html#top"><span>Konklusion</span></a>
+          </div>
+          <div class="menu-item">
+            <a class="menu-item-link" href="medieprodukt.html#top"><span>Produktionsproces</span></a>
+          </div>
+          <div class="menu-item">
+            <a class="menu-item-link" href="litteraturliste.html#top"><span>Litteraturliste</span></a>
+          </div>
+          <div class="menu-item">
+            <a class="menu-item-link" href="brug-af-ai.html#top"><span>Brug af AI</span></a>
+          </div>
+          <div class="menu-item"><a class="menu-item-link" href="bilag.html#top"><span>Bilag</span></a></div>
         </nav>
       </div>
     </aside>
-
     <main id="mainContent">
       <section class="subpage-hero" id="top">
         <div class="content-section">
-          <p class="eyebrow"><span data-lang="da">Medieprodukt</span><span data-lang="en" hidden>Media product</span></p>
-          <h1 class="subpage-title"><span data-lang="da">SoMe-video og digitalt støtteunivers</span><span data-lang="en" hidden>Social media video and digital support universe</span></h1>
-          <p class="subpage-lead"><span data-lang="da">Medieproduktet omsætter analysen til en kort video og en tilhørende hjemmeside, der skaber opmærksomhed, eftertanke og mulighed for støtte.</span><span data-lang="en" hidden>The media product turns the analysis into a short video and a related website that creates attention, reflection, and an opportunity for support.</span></p>
+          <p class="eyebrow">Produkt</p>
+          <h1 class="subpage-title">Produkt</h1>
         </div>
       </section>
-
-      <section class="content-section" id="media-overview">
+      <section class="content-section">
+        <article class="resource-card subpage-card resource-layout">
+          <div class="production-copy resource-copy">
+            <p>
+              Vores medieprodukt er en kort SoMe-video pa 1-3 minutter, der henvender sig til unge
+              maend i risiko for incel-pavirkning. Formatet er valgt, fordi malgruppen primaert moder
+              bade modfortaellinger og radikaliserende indhold i det hurtige, algoritmestyrede feed
+              pa platforme som TikTok, Instagram Reels og YouTube Shorts. Videoen afspejler, hvordan
+              korte, gentagne budskaber om maskulinitet, succes og "os-mod-dem"-taenkning formidles
+              gennem memes, hooks og kommentarer, og hvordan disse diskurser gradvist normaliseres.
+            </p>
+          </div>
+          <div class="resource-image-wrap homepage-product-media">
+            <video class="resource-video homepage-product-video" controls playsinline preload="metadata">
+              <source src="produkt-video.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </article>
+      </section>
+      <section class="content-section">
         <article class="resource-card subpage-card">
           <div class="production-copy">
-            <h2><span data-lang="da">Produktbeskrivelse</span><span data-lang="en" hidden>Product description</span></h2>
-            <p><span data-lang="da">Vores medieprodukt er en kort SoMe-video på 1-3 minutter, der henvender sig til unge mænd i risiko for incel-påvirkning. Formatet er valgt, fordi målgruppen primært møder både modfortællinger og radikaliserende indhold i hurtige, algoritmestyrede feeds på platforme som TikTok, Instagram Reels og YouTube Shorts.</span><span data-lang="en" hidden>Our media product is a short social media video of 1-3 minutes aimed at young men at risk of incel influence. We chose this format because the target group primarily encounters both counter-narratives and radicalizing content in fast, algorithm-driven feeds on platforms such as TikTok, Instagram Reels, and YouTube Shorts.</span></p>
-            <p><span data-lang="da">Videoen tager udgangspunkt i vores diskursanalyse og viser, hvordan gentagelse, humor og polariserende udsagn kan skabe en oplevelse af normalitet. Dramaturgisk bevæger den sig fra relativt uskyldigt indhold om selvoptimering mod mere ekstreme og fjendtlige fortællinger, før et markant brud med stilhed og sort skærm skaber plads til refleksion.</span><span data-lang="en" hidden>The video draws on our discourse analysis and shows how repetition, humor, and polarizing statements can create a sense of normality. Dramaturgically, it moves from relatively harmless self-improvement content toward more extreme and hostile narratives before a marked break with silence and a black screen creates space for reflection.</span></p>
-            <p><span data-lang="da">Som supplement har vi udviklet SnakFørDetGårGalt.dk, der tilbyder et trygt sted med støtte, viden og konkrete redskaber til at bryde med negative online fællesskaber.</span><span data-lang="en" hidden>As a supplement, we developed SnakFørDetGårGalt.dk, which offers a safe place with support, knowledge, and concrete tools to break away from negative online communities.</span></p>
-            <div class="production-links">
-              <a href="https://youtube.com/shorts/JVsi2nr-nMs?feature=share" target="_blank" rel="noreferrer">
-                <span data-lang="da">Se produktet her</span>
-                <span data-lang="en" hidden>Watch the product here</span>
-              </a>
-              <a href="index.html">
-                <span data-lang="da">Tilhørende hjemmeside: SnakFørDetGårGalt.dk</span>
-                <span data-lang="en" hidden>Related website: SnakFørDetGårGalt.dk</span>
-              </a>
-            </div>
+            <h2>Produktionsproces</h2>
+            <p>
+              Kreativt tager videoen udgangspunkt i vores diskursanalyse, der viser, hvordan
+              gentagelse, humor og polariserende udsagn skaber en folelse af normalitet. Inspireret
+              af Shoshana Zuboffs "The Machine Zone" er videoen struktureret som et ubehageligt
+              ekkokammer, hvor kommentarer, korte udsagn og forsimplede forklaringer dominerer. Den
+              minimalistiske sort-hvid-aestetik fjerner distraktioner og fremhaever sprogets magt,
+              mens pseudonyme brugernavne understreger, at diskurserne stammer fra reelle digitale
+              faellesskaber.
+            </p>
+            <p>
+              Dramaturgisk starter videoen med relativt uskyldigt indhold om selvoptimering, men
+              bevaeger sig gradvist mod mere ekstreme og fjendtlige fortaellinger. Gennem stigende
+              tempo, gentagelse og en intensiverende lydflade skabes en folelse af pres og ensidighed,
+              der efterligner den algoritmiske eksponering, brugerne oplever pa sociale medier. Et
+              markant brud midtvejs - med stilhed og sort skaerm - fungerer som et refleksionspunkt,
+              hvor seeren far mulighed for at traede ud af flowet og overveje indholdets betydning.
+            </p>
+            <p>
+              Formålet er at konfrontere seeren med diskurserne i deres "naturlige" form, hvorefter
+              en kort forklaring kobler oplevelsen til begreber som ekkokamre og algoritmisk
+              forstaerkning. Som supplement til videoen har vi udviklet en hjemmeside
+              (SnakForDetGarGalt.dk), der giver konkrete redskaber til at bryde med faellesskaberne.
+              Hjemmesiden er udviklet som et digitalt supplement til vores medieprodukt og fungerer
+              som et trygt, roligt og handlingsorienteret rum for unge maend i risiko for
+              incel-pavirkning.
+            </p>
+            <p>
+              Hvor videoen konfronterer brugeren med de diskurser og mekanismer, der praeger
+              algoritme styrede feeds, er hjemmesidens formål at tilbyde et alternativ: et sted med
+              stotte, refleksion og konkrete muligheder for at raekke ud. I produktionen af
+              hjemmesiden tog vi udgangspunkt i vores analyse af malgruppen, deres medievaner og de
+              visuelle og sproglige virkemidler, der praeger digitale platforme. Siden er derfor
+              bygget med fokus pa enkel navigation, rolige farver, tydelige kontaktmuligheder og et
+              inkluderende sprog, der ikke virker fordommende. Bade struktur, indhold og design er
+              udviklet med henblik pa at gore oplevelsen overskuelig og trovaerdig, sa brugeren
+              hurtigt kan forsta sidens formal og finde hjaelp.
+            </p>
             <blockquote class="production-quote">
-              <span data-lang="da">"Hvis du mærker, at disse fællesskaber trækker dig ind: stop og scroll væk. Eller kontakt os."</span>
-              <span data-lang="en" hidden>"If you feel these communities pulling you in: stop and scroll away. Or contact us."</span>
+              "Hvis du maerker, at disse faellesskaber traekker dig ind: stop og scroll vaek. Eller
+              kontakt os."
             </blockquote>
           </div>
         </article>
       </section>
-
-      <section class="content-section" id="media-ai">
-        <article class="resource-card subpage-card">
-          <div class="production-grid">
-            <section class="production-panel">
-              <h3><span data-lang="da">Virkemidler</span><span data-lang="en" hidden>Creative tools</span></h3>
-              <p><span data-lang="da">Vi bruger et hurtigt SoMe-format, så målgruppen møder budskabet i en form, de allerede kender. Skiftet fra genkendeligt indhold til stilhed og sort skærm skal skabe et tydeligt refleksionspunkt.</span><span data-lang="en" hidden>We use a fast social media format so the target group meets the message in a form they already know. The shift from familiar content to silence and a black screen is meant to create a clear moment of reflection.</span></p>
-            </section>
-            <section class="production-panel">
-              <h3><span data-lang="da">Brug af AI</span><span data-lang="en" hidden>Use of AI</span></h3>
-              <p><span data-lang="da">Vi har brugt AI til at vibe-kode vores hjemmeside.</span><span data-lang="en" hidden>We used AI to vibe-code our website.</span></p>
-              <p><span data-lang="da">AI er desuden anvendt som skrive- og strukturassistent til idégenerering samt forslag til disposition og kapitelstruktur. Alle faglige valg, formuleringer, analyser, konklusioner, kilder og faktatjek er udarbejdet og verificeret af forfatterne.</span><span data-lang="en" hidden>AI was also used as a writing and structure assistant for idea generation and suggestions for disposition and chapter structure. All academic choices, wording, analyses, conclusions, sources, and fact checks were prepared and verified by the authors.</span></p>
-            </section>
-          </div>
-        </article>
-      </section>
     </main>
-
     <footer class="site-footer">
-      <a class="return-top" href="#top"><span data-lang="da">Tilbage til toppen ↑</span><span data-lang="en" hidden>Back to top ↑</span></a>
+      <a class="return-top" href="#top">Tilbage til toppen ↑</a>
       <div class="footer-main">
         <div class="footer-brand-block">
           <div class="footer-logo">
-          <img src="logo-chatgpt.png" alt="SnakFørDetGårGalt.dk" class="footer-logo-image" />
+            <img src="logo-chatgpt.png" alt="SnakForDetGarGalt.dk" class="footer-logo-image" />
           </div>
-          <p><span data-lang="da">Hvis du har brug for støtte, så ræk ud. Et trygt sted at tale, før det går galt.</span><span data-lang="en" hidden>If you need support, reach out. A safe place to talk before things go wrong.</span></p>
         </div>
+        <div class="footer-links-grid">
+          <div class="footer-column">
+            <a href="javascript:void(0)" aria-disabled="true">Kontakt</a>
+            <a href="javascript:void(0)" aria-disabled="true">Tilgaengelighed</a>
+            <a href="javascript:void(0)" aria-disabled="true">Stot</a>
+          </div>
+          <div class="footer-column">
+            <a href="javascript:void(0)" aria-disabled="true">Fortrolighed</a>
+            <a href="javascript:void(0)" aria-disabled="true">Privatliv</a>
+            <a href="javascript:void(0)" aria-disabled="true">Vilkar</a>
+          </div>
+          <div class="footer-column social-column">
+            <a href="javascript:void(0)" aria-disabled="true">Instagram</a>
+            <a href="javascript:void(0)" aria-disabled="true">Facebook</a>
+            <a href="javascript:void(0)" aria-disabled="true">YouTube</a>
+            <a href="javascript:void(0)" aria-disabled="true">X</a>
+          </div>
+        </div>
+        <div class="footer-tagline-box"><p>Hvis du har brug for at tale, er vi her.</p></div>
       </div>
     </footer>
-
     <script src="script.js"></script>
   </body>
 </html>

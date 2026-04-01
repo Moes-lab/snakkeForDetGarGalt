@@ -1,8 +1,8 @@
 ﻿const chatForm = document.querySelector("#chatForm");
 const messageInput = document.querySelector("#messageInput");
 const chatMessages = document.querySelector("#chatMessages");
-const languageToggle = document.querySelector("#languageToggle");
-const languageLabel = document.querySelector("#languageLabel");
+let languageToggle = document.querySelector("#languageToggle");
+let languageLabel = document.querySelector("#languageLabel");
 const htmlRoot = document.documentElement;
 const menuToggle = document.querySelector("#menuToggle");
 const menuClose = document.querySelector("#menuClose");
@@ -16,11 +16,177 @@ const searchTrigger = document.querySelector("#searchTrigger");
 const searchPanel = document.querySelector("#searchPanel");
 const searchForm = document.querySelector("#searchForm");
 const siteSearch = document.querySelector("#siteSearch");
-const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
-const themeLabelElements = document.querySelectorAll("[data-theme-label]");
+let themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+let themeLabelElements = document.querySelectorAll("[data-theme-label]");
 const heroSection = document.querySelector(".hero");
 const heroOrbs = document.querySelectorAll(".hero-orb");
 const revealElements = document.querySelectorAll("[data-reveal]");
+
+const pageMetaTranslations = {
+  "om-projektet.html": {
+    da: { title: "Om Projektet | SnakFørDetGårGalt.dk", hero: "SnakFørDetGårGalt.dk" },
+    en: { title: "About the Project | SnakFørDetGårGalt.dk", hero: "SnakFørDetGårGalt.dk" }
+  },
+  "teori.html": {
+    da: { title: "Teori | SnakFørDetGårGalt.dk", hero: "Teoretisk grundlag" },
+    en: { title: "Theory | SnakFørDetGårGalt.dk", hero: "Theoretical foundation" }
+  },
+  "metode.html": {
+    da: { title: "Metode | SnakFørDetGårGalt.dk", hero: "Metode" },
+    en: { title: "Method | SnakFørDetGårGalt.dk", hero: "Method" }
+  },
+  "analyse.html": {
+    da: { title: "Analyse | SnakFørDetGårGalt.dk", hero: "Analyse" },
+    en: { title: "Analysis | SnakFørDetGårGalt.dk", hero: "Analysis" }
+  },
+  "diskussion.html": {
+    da: { title: "Diskussion | SnakFørDetGårGalt.dk", hero: "Diskussion" },
+    en: { title: "Discussion | SnakFørDetGårGalt.dk", hero: "Discussion" }
+  },
+  "konklusion.html": {
+    da: { title: "Konklusion | SnakFørDetGårGalt.dk", hero: "Konklusion" },
+    en: { title: "Conclusion | SnakFørDetGårGalt.dk", hero: "Conclusion" }
+  },
+  "medieprodukt.html": {
+    da: { title: "Produkt | SnakFørDetGårGalt.dk", hero: "Produkt" },
+    en: { title: "Product | SnakFørDetGårGalt.dk", hero: "Product" }
+  },
+  "litteraturliste.html": {
+    da: { title: "Litteraturliste | SnakFørDetGårGalt.dk", hero: "Litteraturliste" },
+    en: { title: "Literature List | SnakFørDetGårGalt.dk", hero: "Literature List" }
+  },
+  "brug-af-ai.html": {
+    da: { title: "Brug af AI | SnakFørDetGårGalt.dk", hero: "Brug af AI" },
+    en: { title: "Use of AI | SnakFørDetGårGalt.dk", hero: "Use of AI" }
+  },
+  "bilag.html": {
+    da: { title: "Bilag | SnakFørDetGårGalt.dk", hero: "Her finder du bilag 1 med interviewguide og bilag 2 med diskursanalyse." },
+    en: { title: "Appendices | SnakFørDetGårGalt.dk", hero: "Here you will find appendix 1 with the interview guide and appendix 2 with the discourse analysis." }
+  }
+};
+
+const commonStaticTranslations = {
+  da: {
+    skipLink: "Gå til indhold",
+    menuHome: "Hjem",
+    menuAbout: "Om projektet",
+    menuTheory: "Teori",
+    menuMethod: "Metode",
+    menuAnalysis: "Analyse",
+    menuDiscussion: "Diskussion",
+    menuConclusion: "Konklusion",
+    menuProduct: "Produkt",
+    menuReferences: "Litteraturliste",
+    menuAi: "Brug af AI",
+    menuAppendix: "Bilag",
+    footerTop: "Tilbage til toppen ↑",
+    footerTagline: "Hvis du har brug for at tale, er vi her.",
+    searchAria: "Søg",
+    searchLabel: "Søg på siden",
+    searchPlaceholder: "Søg",
+    pageAboutLead: "Projektets forside til den faglige struktur. Her finder du gruppemedlemmer, indledning og motivation samt problemstilling, før resten af opgaven fortsætter på egne undersider."
+  },
+  en: {
+    skipLink: "Skip to content",
+    menuHome: "Home",
+    menuAbout: "About the project",
+    menuTheory: "Theory",
+    menuMethod: "Method",
+    menuAnalysis: "Analysis",
+    menuDiscussion: "Discussion",
+    menuConclusion: "Conclusion",
+    menuProduct: "Product",
+    menuReferences: "Literature list",
+    menuAi: "Use of AI",
+    menuAppendix: "Appendix",
+    footerTop: "Back to top ↑",
+    footerTagline: "If you need to talk, we are here.",
+    searchAria: "Search",
+    searchLabel: "Search the site",
+    searchPlaceholder: "Search",
+    pageAboutLead: "The project front page for the academic structure. Here you will find the group members, introduction and motivation, and the problem statement before the rest of the paper continues on separate subpages."
+  }
+};
+
+function buildMenuIconSvg(key) {
+  const icons = {
+    home: `<svg viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5"/><path d="M6.5 10.5V20h11v-9.5"/><path d="M10 20v-5h4v5"/></svg>`,
+    about: `<svg viewBox="0 0 24 24"><path d="M12 8h.01"/><path d="M11 12h1v5h1"/><circle cx="12" cy="12" r="9"/></svg>`,
+    theory: `<svg viewBox="0 0 24 24"><path d="M12 6v12"/><path d="M6 12h12"/><circle cx="12" cy="12" r="9"/></svg>`,
+    method: `<svg viewBox="0 0 24 24"><path d="M8 5h8"/><path d="M10 5v4l-4.5 8a2 2 0 0 0 1.74 3h9.52A2 2 0 0 0 18.5 17L14 9V5"/></svg>`,
+    analysis: `<svg viewBox="0 0 24 24"><path d="M5 18h14"/><path d="M7 14h10"/><path d="M9 10h6"/><path d="M11 6h2"/></svg>`,
+    discussion: `<svg viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M4 12h10"/><path d="M4 17h7"/></svg>`,
+    conclusion: `<svg viewBox="0 0 24 24"><path d="M5 13 9 17 19 7"/></svg>`,
+    media: `<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3z"/></svg>`,
+    references: `<svg viewBox="0 0 24 24"><path d="M6 4h11a2 2 0 0 1 2 2v14H8a2 2 0 0 0-2 2"/><path d="M6 4a2 2 0 0 0-2 2v14h2"/></svg>`,
+    ai: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82"/><path d="M4.6 9a1.65 1.65 0 0 1-.33-1.82"/><path d="M9 4.6a1.65 1.65 0 0 1 1.82-.33"/><path d="M15 19.4a1.65 1.65 0 0 0 1.82.33"/><path d="M4.6 15a1.65 1.65 0 0 0-.33 1.82"/><path d="M19.4 9a1.65 1.65 0 0 1 .33-1.82"/><path d="M9 19.4a1.65 1.65 0 0 1-1.82.33"/><path d="M15 4.6a1.65 1.65 0 0 0 1.82-.33"/></svg>`,
+    appendix: `<svg viewBox="0 0 24 24"><path d="M6 4h12v16H6z"/><path d="M9 8h6"/><path d="M9 12h6"/><path d="M9 16h4"/></svg>`
+  };
+
+  return icons[key] || icons.about;
+}
+
+function resolveMenuIconKey(href = "") {
+  if (href.includes("index.html") || href === "#top") return "home";
+  if (href.includes("om-projektet")) return "about";
+  if (href.includes("teori")) return "theory";
+  if (href.includes("metode")) return "method";
+  if (href.includes("analyse")) return "analysis";
+  if (href.includes("diskussion")) return "discussion";
+  if (href.includes("konklusion")) return "conclusion";
+  if (href.includes("medieprodukt")) return "media";
+  if (href.includes("litteraturliste")) return "references";
+  if (href.includes("brug-af-ai")) return "ai";
+  if (href.includes("bilag")) return "appendix";
+  return "about";
+}
+
+function enhanceMenuIcons() {
+  const menuLinks = document.querySelectorAll(".menu-item-link");
+  if (!menuLinks.length) return;
+
+  menuLinks.forEach((link) => {
+    if (link.querySelector(".menu-option-icon")) return;
+
+    const icon = document.createElement("span");
+    icon.className = "menu-option-icon";
+    icon.setAttribute("aria-hidden", "true");
+    icon.innerHTML = buildMenuIconSvg(resolveMenuIconKey(link.getAttribute("href") || ""));
+    link.prepend(icon);
+  });
+}
+
+function ensureMenuAccessibilitySection() {
+  const menuList = document.querySelector(".menu-list");
+  if (!menuList || menuList.querySelector(".menu-accessibility-actions")) return;
+
+  const accessibilityItem = document.createElement("details");
+  accessibilityItem.className = "menu-item";
+  accessibilityItem.innerHTML = `
+    <summary>
+      <span class="menu-option-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      </span>
+      <span data-i18n="menu.interpretation">Sprog og tilgængelighed</span>
+    </summary>
+    <div class="submenu menu-accessibility-actions">
+      <button class="theme-menu-button" type="button" id="languageToggle" aria-label="Change language">
+        <span class="menu-option-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18"/><path d="M12 3a15 15 0 0 0 0 18"/></svg>
+        </span>
+        <span id="languageLabel">English</span>
+      </button>
+      <button class="theme-menu-button" type="button" data-theme-toggle>
+        <span class="menu-option-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3v2.5"/><path d="M12 18.5V21"/><path d="M4.93 4.93l1.77 1.77"/><path d="M17.3 17.3l1.77 1.77"/><path d="M3 12h2.5"/><path d="M18.5 12H21"/><path d="M4.93 19.07l1.77-1.77"/><path d="M17.3 6.7l1.77-1.77"/><circle cx="12" cy="12" r="4"/></svg>
+        </span>
+        <span data-theme-label>Dark mode</span>
+      </button>
+    </div>
+  `;
+
+  menuList.append(accessibilityItem);
+}
 
 function updateChatSendState() {
   if (!chatForm || !messageInput) return;
@@ -143,6 +309,13 @@ function setupTiltCards() {
     resetTilt();
   });
 }
+
+ensureMenuAccessibilitySection();
+enhanceMenuIcons();
+languageToggle = document.querySelector("#languageToggle");
+languageLabel = document.querySelector("#languageLabel");
+themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+themeLabelElements = document.querySelectorAll("[data-theme-label]");
 
 const translations = {
   da: {
@@ -379,6 +552,82 @@ function updateThemeButtons() {
   });
 }
 
+function updateStaticSubpageUi(language) {
+  const copy = commonStaticTranslations[language] || commonStaticTranslations.da;
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  const pageCopy = pageMetaTranslations[currentPage]?.[language];
+
+  const skipLink = document.querySelector(".skip-link");
+  if (skipLink) skipLink.textContent = copy.skipLink;
+
+  const contactLinks = document.querySelectorAll(".contact-strip-inner a");
+  if (contactLinks[0]) contactLinks[0].textContent = translations[language]["utility.call"];
+  if (contactLinks[1]) contactLinks[1].textContent = translations[language]["utility.text"];
+  if (contactLinks[2]) contactLinks[2].textContent = translations[language]["utility.chat"];
+
+  if (searchTrigger) {
+    searchTrigger.setAttribute("aria-label", copy.searchAria);
+  }
+
+  const searchLabel = document.querySelector('label[for="siteSearch"]');
+  if (searchLabel) searchLabel.textContent = copy.searchLabel;
+
+  if (siteSearch) {
+    siteSearch.placeholder = copy.searchPlaceholder;
+  }
+
+  const menuLinkMap = [
+    ["index.html#top", copy.menuHome],
+    ["om-projektet.html#top", copy.menuAbout],
+    ["teori.html#top", copy.menuTheory],
+    ["metode.html#top", copy.menuMethod],
+    ["analyse.html#top", copy.menuAnalysis],
+    ["diskussion.html#top", copy.menuDiscussion],
+    ["konklusion.html#top", copy.menuConclusion],
+    ["medieprodukt.html#top", copy.menuProduct],
+    ["litteraturliste.html#top", copy.menuReferences],
+    ["brug-af-ai.html#top", copy.menuAi],
+    ["bilag.html#top", copy.menuAppendix]
+  ];
+
+  menuLinkMap.forEach(([href, text]) => {
+    const link = document.querySelector(`.menu-item-link[href="${href}"]`);
+    const label = link?.querySelector("span:last-child");
+    if (label) label.textContent = text;
+  });
+
+  const returnTop = document.querySelector(".return-top");
+  if (returnTop) returnTop.textContent = copy.footerTop;
+
+  const footerColumns = document.querySelectorAll(".footer-column");
+  if (footerColumns[0]) {
+    const links = footerColumns[0].querySelectorAll("a");
+    if (links[0]) links[0].textContent = translations[language]["footer.contact"];
+    if (links[1]) links[1].textContent = translations[language]["footer.accessibility"];
+    if (links[2]) links[2].textContent = translations[language]["footer.support"];
+  }
+  if (footerColumns[1]) {
+    const links = footerColumns[1].querySelectorAll("a");
+    if (links[0]) links[0].textContent = translations[language]["footer.confidential"];
+    if (links[1]) links[1].textContent = translations[language]["footer.privacy"];
+    if (links[2]) links[2].textContent = translations[language]["footer.terms"];
+  }
+
+  const footerTagline = document.querySelector(".footer-tagline-box p");
+  if (footerTagline) footerTagline.textContent = copy.footerTagline;
+
+  if (pageCopy) {
+    document.title = pageCopy.title;
+    const heroTitle = document.querySelector(".subpage-title");
+    if (heroTitle) heroTitle.textContent = pageCopy.hero;
+  }
+
+  if (currentPage === "om-projektet.html") {
+    const aboutLead = document.querySelector(".subpage-lead");
+    if (aboutLead) aboutLead.textContent = copy.pageAboutLead;
+  }
+}
+
 function setLanguage(language) {
   currentLanguage = language;
   htmlRoot.lang = language;
@@ -409,6 +658,7 @@ function setLanguage(language) {
     languageLabel.textContent = translations[language].toggle;
   }
   updateLanguageBlocks(language);
+  updateStaticSubpageUi(language);
   updateThemeButtons();
   try {
     localStorage.setItem("siteLanguage", language);
