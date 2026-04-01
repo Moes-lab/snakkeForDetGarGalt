@@ -1978,7 +1978,12 @@ body.theme-dark [data-tilt-card]::after {
     box-shadow: 24px 0 50px rgba(17, 33, 79, 0.14);
   }
   .menu-list {
-    padding-bottom: 10rem;
+    padding-bottom: 22rem;
+  }
+  .menu-list::after {
+    content: "";
+    display: block;
+    height: 12rem;
   }
   .header-inner,
   .footer-main,
