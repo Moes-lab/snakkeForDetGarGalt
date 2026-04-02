@@ -775,6 +775,10 @@ function updateStaticSubpageUi(language) {
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
   const pageCopy = pageMetaTranslations[currentPage]?.[language];
 
+  if (currentPage === "index.html") {
+    return;
+  }
+
   const skipLink = document.querySelector(".skip-link");
   if (skipLink) skipLink.textContent = copy.skipLink;
 
