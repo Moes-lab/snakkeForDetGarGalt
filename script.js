@@ -7,15 +7,16 @@ const htmlRoot = document.documentElement;
 const menuToggle = document.querySelector("#menuToggle");
 const menuClose = document.querySelector("#menuClose");
 const siteMenu = document.querySelector("#siteMenu");
+const menuPanel = document.querySelector(".menu-panel");
 const siteHeader = document.querySelector(".site-header");
 const topBanner = document.querySelector(".top-banner");
 const contactStrip = document.querySelector(".contact-strip");
 const chatSection = document.querySelector(".chat-section");
 const chatClose = document.querySelector("#chatClose");
-const searchTrigger = document.querySelector("#searchTrigger");
-const searchPanel = document.querySelector("#searchPanel");
-const searchForm = document.querySelector("#searchForm");
-const siteSearch = document.querySelector("#siteSearch");
+let searchTrigger = document.querySelector("#searchTrigger");
+let searchPanel = document.querySelector("#searchPanel");
+let searchForm = document.querySelector("#searchForm");
+let siteSearch = document.querySelector("#siteSearch");
 let themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
 let themeLabelElements = document.querySelectorAll("[data-theme-label]");
 const heroSection = document.querySelector(".hero");
@@ -406,6 +407,31 @@ function ensureMenuAccessibilitySection() {
   menuList.append(accessibilityItem);
 }
 
+function ensureSearchShell() {
+  const headerTools = document.querySelector(".header-tools");
+  if (!headerTools || headerTools.querySelector(".search-shell")) return;
+
+  const searchShell = document.createElement("div");
+  searchShell.className = "search-shell";
+  searchShell.innerHTML = `
+    <button class="search-trigger" id="searchTrigger" type="button" aria-expanded="false" aria-controls="searchPanel" aria-label="Søg">
+      <span class="search-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.65" y1="16.65" x2="21" y2="21"/></svg>
+      </span>
+    </button>
+    <div class="search-panel" id="searchPanel" hidden>
+      <div class="search-panel-inner">
+        <form class="search-box" id="searchForm" role="search">
+          <label class="sr-only" for="siteSearch">Søg på siden</label>
+          <input id="siteSearch" name="search" type="search" placeholder="Søg" autocomplete="off" />
+        </form>
+      </div>
+    </div>
+  `;
+
+  headerTools.prepend(searchShell);
+}
+
 function updateChatSendState() {
   if (!chatForm || !messageInput) return;
   const hasValue = messageInput.value.trim().length > 0;
@@ -420,7 +446,29 @@ function updateChatSendState() {
 function syncBodyScrollLock() {
   const shouldLockScroll =
     chatSection?.classList.contains("chat-expanded") || isMenuOpen();
-  document.body.style.overflow = shouldLockScroll ? "hidden" : "";
+  if (shouldLockScroll) {
+    if (!document.body.classList.contains("scroll-locked")) {
+      lockedScrollY = window.scrollY || window.pageYOffset || 0;
+    }
+
+    document.documentElement.style.overflow = "hidden";
+    document.body.classList.add("scroll-locked");
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${lockedScrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.width = "100%";
+    return;
+  }
+
+  document.documentElement.style.overflow = "";
+  document.body.classList.remove("scroll-locked");
+  document.body.style.position = "";
+  document.body.style.top = "";
+  document.body.style.left = "";
+  document.body.style.right = "";
+  document.body.style.width = "";
+  window.scrollTo(0, lockedScrollY);
 }
 
 function syncHeaderLayout() {
@@ -529,9 +577,14 @@ function setupTiltCards() {
 }
 
 ensureMenuAccessibilitySection();
+ensureSearchShell();
 enhanceMenuIcons();
 languageToggle = document.querySelector("#languageToggle");
 languageLabel = document.querySelector("#languageLabel");
+searchTrigger = document.querySelector("#searchTrigger");
+searchPanel = document.querySelector("#searchPanel");
+searchForm = document.querySelector("#searchForm");
+siteSearch = document.querySelector("#siteSearch");
 themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
 themeLabelElements = document.querySelectorAll("[data-theme-label]");
 
@@ -746,6 +799,7 @@ const translations = {
 
 let currentLanguage = "da";
 let currentTheme = "light";
+let lockedScrollY = 0;
 const themeLabels = {
   da: {
     light: "Mørk tilstand",
@@ -1129,6 +1183,12 @@ siteMenu?.addEventListener("click", (event) => {
     closeMenu();
   }
 });
+
+menuPanel?.addEventListener("wheel", (event) => {
+  if (!isMenuOpen()) return;
+  event.preventDefault();
+  menuPanel.scrollTop += event.deltaY;
+}, { passive: false });
 
 let savedLanguage = "da";
 try {
