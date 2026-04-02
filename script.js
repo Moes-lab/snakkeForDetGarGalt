@@ -800,6 +800,7 @@ const translations = {
 let currentLanguage = "da";
 let currentTheme = "light";
 let lockedScrollY = 0;
+let menuTouchStartY = 0;
 const themeLabels = {
   da: {
     light: "Mørk tilstand",
@@ -1188,6 +1189,37 @@ menuPanel?.addEventListener("wheel", (event) => {
   if (!isMenuOpen()) return;
   event.preventDefault();
   menuPanel.scrollTop += event.deltaY;
+}, { passive: false });
+
+menuPanel?.addEventListener("touchstart", (event) => {
+  if (!isMenuOpen()) return;
+  menuTouchStartY = event.touches[0]?.clientY || 0;
+}, { passive: true });
+
+menuPanel?.addEventListener("touchmove", (event) => {
+  if (!isMenuOpen()) return;
+  event.stopPropagation();
+}, { passive: true });
+
+siteMenu?.addEventListener("touchmove", (event) => {
+  if (!isMenuOpen()) return;
+
+  const target = event.target;
+  const insidePanel = menuPanel?.contains(target);
+
+  if (!insidePanel || !menuPanel) {
+    event.preventDefault();
+    return;
+  }
+
+  const currentY = event.touches[0]?.clientY || 0;
+  const deltaY = menuTouchStartY - currentY;
+  const atTop = menuPanel.scrollTop <= 0;
+  const atBottom = Math.ceil(menuPanel.scrollTop + menuPanel.clientHeight) >= menuPanel.scrollHeight;
+
+  if ((atTop && deltaY < 0) || (atBottom && deltaY > 0)) {
+    event.preventDefault();
+  }
 }, { passive: false });
 
 let savedLanguage = "da";
