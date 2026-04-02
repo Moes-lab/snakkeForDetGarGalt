@@ -851,6 +851,12 @@ function updatePageContent(language) {
   if (!mainContent) return;
 
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  const hasPageTranslation = Boolean(pageContentTranslations[currentPage]);
+
+  if (!hasPageTranslation) {
+    return;
+  }
+
   if (!mainContent.dataset.originalDa) {
     mainContent.dataset.originalDa = mainContent.innerHTML;
   }
