@@ -7,7 +7,6 @@ const htmlRoot = document.documentElement;
 const menuToggle = document.querySelector("#menuToggle");
 const menuClose = document.querySelector("#menuClose");
 const siteMenu = document.querySelector("#siteMenu");
-const menuPanel = document.querySelector(".menu-panel");
 const siteHeader = document.querySelector(".site-header");
 const topBanner = document.querySelector(".top-banner");
 const contactStrip = document.querySelector(".contact-strip");
@@ -446,29 +445,7 @@ function updateChatSendState() {
 function syncBodyScrollLock() {
   const shouldLockScroll =
     chatSection?.classList.contains("chat-expanded") || isMenuOpen();
-  if (shouldLockScroll) {
-    if (!document.body.classList.contains("scroll-locked")) {
-      lockedScrollY = window.scrollY || window.pageYOffset || 0;
-    }
-
-    document.documentElement.style.overflow = "hidden";
-    document.body.classList.add("scroll-locked");
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${lockedScrollY}px`;
-    document.body.style.left = "0";
-    document.body.style.right = "0";
-    document.body.style.width = "100%";
-    return;
-  }
-
-  document.documentElement.style.overflow = "";
-  document.body.classList.remove("scroll-locked");
-  document.body.style.position = "";
-  document.body.style.top = "";
-  document.body.style.left = "";
-  document.body.style.right = "";
-  document.body.style.width = "";
-  window.scrollTo(0, lockedScrollY);
+  document.body.style.overflow = shouldLockScroll ? "hidden" : "";
 }
 
 function syncHeaderLayout() {
@@ -799,8 +776,6 @@ const translations = {
 
 let currentLanguage = "da";
 let currentTheme = "light";
-let lockedScrollY = 0;
-let menuTouchStartY = 0;
 const themeLabels = {
   da: {
     light: "Mørk tilstand",
@@ -1184,43 +1159,6 @@ siteMenu?.addEventListener("click", (event) => {
     closeMenu();
   }
 });
-
-menuPanel?.addEventListener("wheel", (event) => {
-  if (!isMenuOpen()) return;
-  event.preventDefault();
-  menuPanel.scrollTop += event.deltaY;
-}, { passive: false });
-
-menuPanel?.addEventListener("touchstart", (event) => {
-  if (!isMenuOpen()) return;
-  menuTouchStartY = event.touches[0]?.clientY || 0;
-}, { passive: true });
-
-menuPanel?.addEventListener("touchmove", (event) => {
-  if (!isMenuOpen()) return;
-  event.stopPropagation();
-}, { passive: true });
-
-siteMenu?.addEventListener("touchmove", (event) => {
-  if (!isMenuOpen()) return;
-
-  const target = event.target;
-  const insidePanel = menuPanel?.contains(target);
-
-  if (!insidePanel || !menuPanel) {
-    event.preventDefault();
-    return;
-  }
-
-  const currentY = event.touches[0]?.clientY || 0;
-  const deltaY = menuTouchStartY - currentY;
-  const atTop = menuPanel.scrollTop <= 0;
-  const atBottom = Math.ceil(menuPanel.scrollTop + menuPanel.clientHeight) >= menuPanel.scrollHeight;
-
-  if ((atTop && deltaY < 0) || (atBottom && deltaY > 0)) {
-    event.preventDefault();
-  }
-}, { passive: false });
 
 let savedLanguage = "da";
 try {
