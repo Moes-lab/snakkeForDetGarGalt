@@ -878,8 +878,11 @@ function updatePageContent(language) {
 function setLanguage(language) {
   currentLanguage = language;
   htmlRoot.lang = language;
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
-  updatePageContent(language);
+  if (currentPage !== "index.html") {
+    updatePageContent(language);
+  }
 
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const key = element.dataset.i18n;
@@ -907,7 +910,13 @@ function setLanguage(language) {
     languageLabel.textContent = translations[language].toggle;
   }
   updateLanguageBlocks(language);
-  updateStaticSubpageUi(language);
+
+  if (currentPage !== "index.html") {
+    updateStaticSubpageUi(language);
+  } else {
+    document.title = "SnakFørDetGårGalt.dk";
+  }
+
   updateThemeButtons();
   try {
     localStorage.setItem("siteLanguage", language);
