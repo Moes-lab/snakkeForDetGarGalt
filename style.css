@@ -35,6 +35,10 @@ body.theme-dark {
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+html,
+body {
+  overflow-x: hidden;
+}
 body {
   margin: 0;
   background:
@@ -1822,10 +1826,6 @@ a { color: inherit; text-decoration: none; }
 .footer-column a { color: white; text-decoration: none; line-height: 1.5; text-align: center; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
 
-body {
-  overflow-x: hidden;
-}
-
 .site-header {
   box-shadow: 0 18px 44px rgba(8, 13, 47, 0.16);
 }
@@ -2496,6 +2496,26 @@ body.theme-dark [data-tilt-card]::after {
   .analysis-page .subpage-card {
     padding: 1.6rem 1.35rem;
   }
+  .page-about,
+  .page-about #mainContent,
+  .page-about .content-section,
+  .page-about .subpage-card,
+  .page-about .resource-card,
+  .page-about .production-copy,
+  .page-about .resource-copy,
+  .page-about .production-grid,
+  .page-about .resource-layout,
+  .page-about .resource-image-wrap {
+    max-width: 100%;
+    min-width: 0;
+  }
+  .page-about .site-footer,
+  .page-about .footer-main,
+  .page-about .footer-links-grid,
+  .page-about .footer-column {
+    max-width: 100%;
+    min-width: 0;
+  }
   .page-about .production-list {
     padding-left: 1rem;
   }
@@ -2661,6 +2681,10 @@ body.theme-dark [data-tilt-card]::after {
   .page-about .content-section,
   .page-about .subpage-hero .content-section {
     width: min(calc(100% - 1.25rem), 1120px);
+  }
+  .page-about,
+  .page-about #mainContent {
+    overflow-x: clip;
   }
   .page-about .subpage-card {
     padding: 1.25rem 1rem;
