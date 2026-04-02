@@ -2496,6 +2496,10 @@ body.theme-dark [data-tilt-card]::after {
   .analysis-page .subpage-card {
     padding: 1.6rem 1.35rem;
   }
+  .page-about .subpage-title {
+    font-size: clamp(1.9rem, 7.8vw, 2.8rem);
+    line-height: 1.08;
+  }
   .page-about,
   .page-about #mainContent,
   .page-about .content-section,
@@ -2681,6 +2685,10 @@ body.theme-dark [data-tilt-card]::after {
   .page-about .content-section,
   .page-about .subpage-hero .content-section {
     width: min(calc(100% - 1.25rem), 1120px);
+  }
+  .page-about .subpage-title {
+    font-size: clamp(1.3rem, 5.9vw, 1.7rem);
+    line-height: 1.1;
   }
   .page-about,
   .page-about #mainContent {
