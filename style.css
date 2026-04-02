@@ -1263,6 +1263,16 @@ a { color: inherit; text-decoration: none; }
   color: #314554;
 }
 
+.page-about .production-copy,
+.page-about .production-copy p,
+.page-about .production-copy li,
+.page-about .production-copy a,
+.page-about .subpage-title,
+.page-about .subpage-lead {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 .page-about .resource-download,
 .page-about .production-links a {
   color: #244f74;
@@ -2486,6 +2496,13 @@ body.theme-dark [data-tilt-card]::after {
   .analysis-page .subpage-card {
     padding: 1.6rem 1.35rem;
   }
+  .page-about .production-list {
+    padding-left: 1rem;
+  }
+  .page-about .production-panel,
+  .page-about .resource-card {
+    padding: 1.35rem;
+  }
   .resource-image,
   .resource-video {
     min-height: 220px;
@@ -2640,6 +2657,21 @@ body.theme-dark [data-tilt-card]::after {
   }
   .feature-visual {
     height: 260px;
+  }
+  .page-about .content-section,
+  .page-about .subpage-hero .content-section {
+    width: min(calc(100% - 1.25rem), 1120px);
+  }
+  .page-about .subpage-card {
+    padding: 1.25rem 1rem;
+  }
+  .page-about .production-panel,
+  .page-about .resource-card {
+    padding: 1.1rem;
+  }
+  .page-about .production-list {
+    padding-left: 0.9rem;
+    gap: 0.6rem;
   }
 }
 
