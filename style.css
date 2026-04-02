@@ -2557,7 +2557,20 @@ body.theme-dark [data-tilt-card]::after {
     line-height: 1.72;
   }
   .feature-stack {
-    margin-top: -2rem;
+    margin-top: 0;
+    padding-top: 0;
+    gap: 1.6rem;
+  }
+  .feature-copy-card {
+    margin-top: 0;
+    padding: 1.8rem 1.4rem;
+  }
+  .feature-copy-card h2 {
+    font-size: clamp(1.65rem, 7vw, 2.2rem);
+  }
+  .feature-copy-card p {
+    font-size: 1rem;
+    line-height: 1.68;
   }
   .homepage-product-video {
     width: min(100%, 260px);
@@ -2618,6 +2631,12 @@ body.theme-dark [data-tilt-card]::after {
   }
   .hero-copy {
     font-size: 0.98rem;
+  }
+  .feature-stack {
+    gap: 1.25rem;
+  }
+  .feature-copy-card {
+    padding: 1.45rem 1.1rem;
   }
   .feature-visual {
     height: 260px;
