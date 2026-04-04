@@ -7,6 +7,7 @@ const htmlRoot = document.documentElement;
 const menuToggle = document.querySelector("#menuToggle");
 const menuClose = document.querySelector("#menuClose");
 const siteMenu = document.querySelector("#siteMenu");
+const menuPanel = siteMenu?.querySelector(".menu-panel");
 const siteHeader = document.querySelector(".site-header");
 const topBanner = document.querySelector(".top-banner");
 const contactStrip = document.querySelector(".contact-strip");
@@ -21,6 +22,7 @@ let themeLabelElements = document.querySelectorAll("[data-theme-label]");
 const heroSection = document.querySelector(".hero");
 const heroOrbs = document.querySelectorAll(".hero-orb");
 const revealElements = document.querySelectorAll("[data-reveal]");
+let menuLockedScrollY = 0;
 
 const pageMetaTranslations = {
   "om-projektet.html": {
@@ -443,9 +445,33 @@ function updateChatSendState() {
 }
 
 function syncBodyScrollLock() {
-  const shouldLockScroll =
-    chatSection?.classList.contains("chat-expanded") || isMenuOpen();
+  const shouldLockScroll = chatSection?.classList.contains("chat-expanded");
   document.body.style.overflow = shouldLockScroll ? "hidden" : "";
+}
+
+function lockMenuScroll() {
+  if (document.body.dataset.menuLocked === "true") return;
+  menuLockedScrollY = window.scrollY || window.pageYOffset || 0;
+  document.body.dataset.menuLocked = "true";
+  document.body.style.position = "fixed";
+  document.body.style.top = `-${menuLockedScrollY}px`;
+  document.body.style.left = "0";
+  document.body.style.right = "0";
+  document.body.style.width = "100%";
+  document.body.style.overflow = "hidden";
+  menuPanel?.scrollTo({ top: 0, behavior: "auto" });
+}
+
+function unlockMenuScroll() {
+  if (document.body.dataset.menuLocked !== "true") return;
+  document.body.dataset.menuLocked = "false";
+  document.body.style.position = "";
+  document.body.style.top = "";
+  document.body.style.left = "";
+  document.body.style.right = "";
+  document.body.style.width = "";
+  syncBodyScrollLock();
+  window.scrollTo(0, menuLockedScrollY);
 }
 
 function syncHeaderLayout() {
@@ -1062,7 +1088,7 @@ function closeMenu() {
   if (!siteMenu || !menuToggle) return;
   menuToggle.setAttribute("aria-expanded", "false");
   siteMenu.classList.remove("is-open");
-  syncBodyScrollLock();
+  unlockMenuScroll();
   window.setTimeout(() => {
     if (!siteMenu.classList.contains("is-open")) {
       siteMenu.hidden = true;
@@ -1075,9 +1101,9 @@ function openMenu() {
   syncHeaderLayout();
   siteMenu.hidden = false;
   menuToggle.setAttribute("aria-expanded", "true");
-  syncBodyScrollLock();
+  lockMenuScroll();
   window.requestAnimationFrame(() => {
-    siteMenu.classList.add("is-open");
+      siteMenu.classList.add("is-open");
   });
 }
 
